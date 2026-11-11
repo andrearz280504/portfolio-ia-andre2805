@@ -1,0 +1,2052 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Portfólio André Rodrigues</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Portfólio de projetos com inteligência artificial de André Rodrigues.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: índice suíço. Trilho de metadados com filete no topo, pôster com a chave Manual / Com IA na abertura,
+   capítulos em formato de estudo de caso e uma pílula preta flutuante como navegação entre as abas.
+   Visual deliberadamente claro (cinza papel + preto), seguindo as referências. */
+:root{
+  --paper:#EBEBE8;
+  --cream:#FAF7F1;
+  --slot-a:#DAD7D0;
+  --slot-b:#E8E5DF;
+  --slot-edge:rgba(255,255,255,.78);
+  --ink:#1B1B1A;
+  --ink-soft:#5D5C58;
+  --ink-faint:#9D9B95;
+  --rule:#C9C7C1;
+  --on-ink-faint:rgba(235,235,232,.5);
+  --on-ink-rule:rgba(235,235,232,.16);
+  --signal:#E3262D;
+  --glass:rgba(250,248,244,.8);
+  --shadow:rgba(27,27,26,.32);
+  --on-ink-soft:rgba(235,235,232,.74);
+  --signal-on-ink:#FF8C90;
+  --on-signal:#FFFFFF;
+  --pos:#1E7A3C;
+  --scrim:rgba(27,27,26,.9);
+
+  --f-sans:"Geist","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --f-mono:"Geist Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+
+  --r-card:28px;
+  --r-pill:999px;
+  --gut:clamp(0px,2.2vw,28px);
+}
+*,*::before,*::after{box-sizing:border-box}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--f-sans);font-size:15px;line-height:1.5;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));
+  padding-right:max(16px, env(safe-area-inset-right, 0px));
+}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+a{color:inherit}
+sup{font-size:.36em;line-height:0;vertical-align:super;letter-spacing:0;font-weight:400;margin-left:.06em}
+:focus-visible{outline:2px solid var(--signal);outline-offset:3px;border-radius:6px}
+.page{max-width:1480px;margin:0 auto;padding-inline:var(--gut)}
+
+/* ---------- trilho superior ---------- */
+.rail{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--paper);
+  display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr) auto;gap:16px;align-items:start;
+  padding-block:14px 12px;border-bottom:1px solid var(--ink);font-size:12px;line-height:1.3;
+}
+.rail > div{min-width:0}
+.rail .k{display:block;color:var(--ink-soft)}
+.rail .v{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand{display:flex;gap:10px;align-items:flex-start;text-decoration:none}
+.brand svg{width:22px;height:22px;flex:none;margin-top:1px}
+.brand strong{font-weight:600}
+.chapter{font-size:13px;white-space:nowrap;text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:760px){
+  .rail{grid-template-columns:minmax(0,1fr) auto}
+  .rail .c2,.rail .c3{display:none}
+}
+
+/* ---------- views ---------- */
+.view{padding-bottom:150px;animation:rise .55s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{opacity:.35;transform:translateY(10px)}}
+
+/* ---------- pôster (índice) ---------- */
+.poster{display:grid;grid-template-rows:auto 1fr auto;min-height:clamp(520px,76vh,840px);padding-block:16px 22px;border-bottom:1px solid var(--ink)}
+.p-row{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px;font-size:12.5px;line-height:1.3}
+.p-stmt{display:grid;grid-template-columns:minmax(24px,1fr) minmax(0,3fr);gap:12px}
+.p-stmt p{margin:0;max-width:28ch}
+.p-stmt.s1{grid-column:1/6}
+.p-stmt.s2{grid-column:6/10}
+.p-idx{grid-column:10/13;display:flex;justify-content:space-between;gap:12px}
+.p-mid{display:grid;justify-items:center;align-content:center;gap:16px;padding-block:clamp(40px,8vh,96px)}
+.p-hint{font-size:11.5px;color:var(--ink-soft);letter-spacing:.02em}
+.p-bot{align-items:end}
+.p-sig{grid-column:1/6;font-size:clamp(22px,2.4vw,32px);line-height:1.04;letter-spacing:-.035em}
+.p-mode{grid-column:6/10;font-size:12.5px}
+.p-mode b{font-weight:500}
+.p-mto{grid-column:10/13;display:flex;justify-content:space-between;align-items:baseline;font-size:clamp(22px,2.4vw,32px);letter-spacing:-.03em;line-height:1}
+.p-mto small{font-size:.48em;letter-spacing:0;margin-left:.12em}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--signal);margin-right:7px;vertical-align:1px;transition:background .3s}
+.is-manual .dot{background:var(--ink-faint)}
+@media (max-width:760px){
+  .p-row{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:14px}
+  .p-stmt.s1,.p-stmt.s2,.p-idx,.p-sig{grid-column:1/-1}
+  .p-mode{grid-column:1/2}
+  .p-mto{grid-column:2/3}
+}
+
+/* chave Manual / Com IA */
+.switch{
+  --pad:clamp(6px,.9vw,10px);
+  position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:center;
+  width:min(100%,720px);height:clamp(96px,14vw,176px);padding:var(--pad);
+  border:0;border-radius:var(--r-pill);background:var(--ink);cursor:pointer;
+  font:inherit;color:inherit;-webkit-tap-highlight-color:transparent;
+}
+.switch .knob{
+  position:absolute;top:var(--pad);bottom:var(--pad);left:var(--pad);width:calc(50% - var(--pad));
+  border-radius:var(--r-pill);background:var(--paper);transform:translateX(100%);
+  transition:transform .6s cubic-bezier(.75,0,.2,1);
+}
+.switch[aria-pressed="true"] .knob{transform:translateX(0)}
+.opt{position:relative;z-index:1;text-align:center;font-size:clamp(26px,5.4vw,68px);font-weight:500;letter-spacing:-.05em;line-height:1;white-space:nowrap;transition:color .3s .14s}
+.opt-a{color:var(--ink)}
+.opt-b{color:var(--paper)}
+.switch[aria-pressed="false"] .opt-a{color:var(--paper)}
+.switch[aria-pressed="false"] .opt-b{color:var(--ink)}
+.p-thesis{margin:0 auto;padding-top:clamp(28px,5vh,64px);max-width:22ch;text-align:center;text-wrap:balance;font-size:clamp(24px,3.2vw,44px);line-height:1.08;letter-spacing:-.035em;font-weight:500}
+.poster{grid-template-rows:auto 1fr auto}
+.p-q{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft)}
+.p-drop{margin:0;font-size:clamp(34px,6vw,84px);font-weight:500;letter-spacing:-.05em;line-height:1;color:var(--ink);max-height:0;opacity:0;overflow:hidden;transition:opacity .6s .3s,max-height .6s}
+.switch{transition:background .6s}
+/* modo sem IA: a página escurece e quase tudo some */
+html,body{transition:background-color .7s ease,color .7s ease}
+html.sem-ia{--paper:#232322;--ink:#E4E3DF;--ink-soft:#8E8C86;--ink-faint:#5E5D59;--rule:#383836;--cream:#2B2B2A;--slot-a:#2A2A29;--slot-b:#262625;--slot-edge:rgba(255,255,255,.06);color-scheme:dark}
+html.sem-ia body{background:#1A1A19}
+html.sem-ia .switch{background:#0F0F0E}
+html.sem-ia .switch .knob{background:#3A3A38}
+html.sem-ia .switch[aria-pressed="false"] .opt-b{color:#E4E3DF}
+html.sem-ia .switch[aria-pressed="false"] .opt-a{color:#6F6E6A}
+html.sem-ia .rail,html.sem-ia body::before{background:#1A1A19}
+.fade-off,.view[data-view="inicio"] > .sec,.dock{transition:opacity .5s ease}
+html.sem-ia .fade-off,html.sem-ia .view[data-view="inicio"] > .sec,html.sem-ia .dock{opacity:0;pointer-events:none}
+html.sem-ia .view[data-view="inicio"] > .sec{display:none}
+html.sem-ia .poster{border-bottom-color:transparent}
+html.sem-ia .p-drop{max-height:2.4em;opacity:1}
+.sec.sec-nb{border-top:0}
+.cardgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.cg{position:relative;display:grid;gap:8px;align-content:start;padding:22px;border-radius:var(--r-card);box-shadow:inset 0 0 0 1.5px var(--ink);text-decoration:none;color:inherit;min-width:0}
+.cg-n{font-family:var(--f-mono);font-size:11.5px;color:var(--ink-soft)}
+.cg h3{margin:0;font-size:19px;font-weight:500;letter-spacing:-.02em;line-height:1.15}
+.cg p{margin:0;font-size:14px;line-height:1.45;color:var(--ink-soft)}
+.cg-link{transition:background .3s,color .3s}
+.cg-link:hover{background:var(--ink);color:var(--paper)}
+.cg-link:hover p,.cg-link:hover .cg-n{color:var(--on-ink-soft)}
+.cg-go{position:absolute;top:18px;right:20px;font-size:18px}
+@media (max-width:900px){.cardgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.cardgrid{grid-template-columns:minmax(0,1fr)}}
+.dec{border-top:1px solid var(--ink)}
+.dec-h,.dec-r{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr) minmax(0,1.3fr);gap:20px;padding:14px 0;border-bottom:1px solid var(--rule)}
+.dec-h{font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft)}
+.dec-r em{display:none;font-style:normal;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);margin-bottom:2px}
+.dec-a{font-size:15px;text-decoration:line-through;text-decoration-color:var(--signal);text-decoration-thickness:1.5px;color:var(--ink-soft)}
+.dec-b{font-size:14px;color:var(--ink-soft)}
+.dec-c{font-size:15px;font-weight:500}
+@media (max-width:760px){.dec-h{display:none}.dec-r{grid-template-columns:minmax(0,1fr);gap:8px}.dec-r em{display:block}}
+.skgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.skg{padding:20px;border-radius:var(--r-card);background:linear-gradient(225deg,var(--slot-a) 0%,var(--slot-b) 48%,var(--cream) 100%);box-shadow:inset 0 0 0 1px var(--slot-edge);min-width:0}
+.skg h3{margin:0 0 12px;font-size:12px;text-transform:uppercase;letter-spacing:.08em;font-weight:600}
+.skg ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.skg li{display:grid;gap:2px}
+.skg code{font-family:var(--f-mono);font-size:12.5px;color:var(--ink)}
+.skg span{font-size:13px;color:var(--ink-soft);line-height:1.35}
+@media (max-width:900px){.skgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.skgrid{grid-template-columns:minmax(0,1fr)}}
+[data-view="p04"] .slot-cover.has-media img,[data-view="p05"] .slot-cover.has-media img{object-position:50% 50%}
+.sub-c{margin:-8px auto clamp(28px,4vw,48px);max-width:52ch;text-align:center;text-wrap:balance;font-size:clamp(15px,1.5vw,19px);color:var(--ink-soft)}
+[data-view="p02"] .slot-cover.has-media img{object-position:50% 50%}
+.film{margin:0;display:grid;gap:10px}
+.film video{display:block;width:100%;aspect-ratio:16/9;border-radius:var(--r-card);background:var(--ink)}
+.film figcaption{font-size:12.5px;color:var(--ink-soft)}
+.brand-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:clamp(16px,3vw,40px);align-items:start}
+.brand-logo{margin:0;border-radius:var(--r-card);background:#0E0E0D}
+.brand-logo img{display:block;width:100%;height:auto;opacity:1}
+@media (max-width:760px){.brand-grid{grid-template-columns:minmax(0,1fr)}}
+.board{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px 12px}
+.board li{display:grid;gap:4px;align-content:start;min-width:0}
+.board-img{appearance:none;border:0;padding:0;margin-bottom:6px;border-radius:14px;overflow:hidden;cursor:zoom-in;background:var(--ink)}
+.board-img img{display:block;width:100%;height:auto;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.board-img:hover img{transform:scale(1.05)}
+.board-t{font-family:var(--f-mono);font-size:11.5px;color:var(--ink-soft)}
+.board strong{font-size:15px;font-weight:500;letter-spacing:-.01em}
+.board-d{font-size:13px;color:var(--ink-soft);line-height:1.35}
+@media (max-width:900px){.board{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.meta-one{grid-template-columns:minmax(0,1fr)}
+.facts-k{font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft)}
+.offset .pre:empty{display:none}
+.ix-wrap{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(16px,3vw,40px);align-items:start}
+.ix li:last-child{border-bottom:1px solid var(--ink)}
+.ix-guide{position:sticky;top:calc(80px + env(safe-area-inset-top, 0px));display:grid;gap:16px;padding:24px;border-radius:var(--r-card);background:var(--ink);color:var(--paper)}
+.ix-guide-n{font-size:64px;font-weight:500;letter-spacing:-.05em;line-height:.9}
+.ix-guide p{margin:0;font-size:16px;line-height:1.4}
+.ix-guide-go{font-size:12.5px;color:var(--on-ink-faint)}
+@media (max-width:860px){.ix-wrap{grid-template-columns:minmax(0,1fr)}.ix-guide{position:static;order:-1}}
+.card-link{position:relative;overflow:hidden;isolation:isolate}
+.card-bg{position:absolute;inset:0;z-index:-1;width:100%;height:100%;object-fit:cover;opacity:.22;transition:transform .8s cubic-bezier(.2,.7,.2,1),opacity .6s}
+.card-link:hover .card-bg,.card-link:focus-visible .card-bg{transform:scale(1.08);opacity:.36}
+.photo-zoom{overflow:hidden}
+.photo-zoom img{transition:transform .9s cubic-bezier(.2,.7,.2,1),opacity .6s;opacity:.78}
+.photo-zoom:hover img{transform:scale(1.07);opacity:.92}
+.mega.mega-c{text-align:center;hyphens:none;overflow-wrap:normal;font-size:clamp(26px,7vw,112px);line-height:.95}
+.mega-c span{display:block;white-space:nowrap}
+.courses{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:4px;font-size:13.5px;color:var(--ink-soft)}
+.courses li::before{content:"→ ";color:var(--ink)}
+.widget{animation:wIn .9s cubic-bezier(.2,.7,.2,1) .35s both}
+@keyframes wIn{from{opacity:0;transform:translateY(24px) scale(.96)}}
+.edit-hint{display:block;font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);opacity:.75;text-align:right;padding-right:6px;margin-top:-3px;pointer-events:none}
+
+/* ---------- blocos comuns ---------- */
+.meta-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;padding-block:12px;border-bottom:1px solid var(--rule);font-size:12px;line-height:1.3}
+.meta-row > div{min-width:0}
+.meta-row .k{display:block;color:var(--ink-soft)}
+@media (max-width:640px){.meta-row{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:10px}}
+
+.offset{padding-left:clamp(0px,11vw,190px)}
+.pre{display:grid;gap:2px;margin-top:clamp(28px,5vw,64px);font-size:12px;text-transform:uppercase;letter-spacing:.05em;line-height:1.25}
+.mega{
+  margin:clamp(18px,2.4vw,32px) 0 clamp(32px,5vw,64px);
+  font-size:clamp(44px,9vw,132px);line-height:.9;letter-spacing:-.05em;font-weight:500;
+  text-transform:uppercase;text-wrap:balance;hyphens:auto;overflow-wrap:break-word;
+}
+@media (max-width:640px){.offset{padding-left:0}}
+
+.ph{color:var(--ink-faint)}
+.ph::before{content:"[\00a0"}
+.ph::after{content:"\00a0]"}
+
+.slot{
+  position:relative;display:grid;place-items:center;max-width:100%;margin:0;overflow:hidden;
+  border-radius:var(--r-card);
+  background:linear-gradient(225deg,var(--slot-a) 0%,var(--slot-b) 48%,var(--cream) 100%);
+  box-shadow:inset 0 0 0 1px var(--slot-edge);
+}
+.slot-label{display:grid;justify-items:center;gap:8px;padding:16px;text-align:center;font-size:12.5px;line-height:1.3;color:var(--ink-soft)}
+.slot-plus{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--ink-faint);display:grid;place-items:center;font-size:18px;line-height:1;color:var(--ink-soft)}
+.slot-spec{font-family:var(--f-mono);font-size:11px;color:var(--ink-faint)}
+.has-media img{display:block;width:100%;height:100%;object-fit:cover}
+
+.sec{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.4fr);gap:clamp(20px,4vw,72px);padding-block:clamp(36px,5.5vw,76px);border-top:1px solid var(--rule)}
+.sec.sec-full{grid-template-columns:minmax(0,1fr)}
+.sec-head{display:flex;gap:6px;align-items:flex-start;flex-wrap:wrap}
+.sec-body{min-width:0;display:grid;gap:clamp(24px,3vw,40px);align-content:start}
+@media (max-width:760px){.sec{grid-template-columns:minmax(0,1fr)}}
+
+.chip{display:inline-flex;align-items:center;height:30px;padding:0 14px;border-radius:var(--r-pill);font-size:11.5px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;text-decoration:none}
+.chip-o{box-shadow:inset 0 0 0 1.5px var(--ink)}
+.chip-f{background:var(--ink);color:var(--paper)}
+.chip-ghost{box-shadow:inset 0 0 0 1.5px var(--ink-faint);color:var(--ink-faint)}
+.chip-lg{height:40px;padding:0 18px;font-size:12px}
+
+.lead{margin:0;font-size:clamp(20px,2.3vw,32px);line-height:1.2;letter-spacing:-.025em;max-width:32ch;text-wrap:pretty}
+.txt{margin:0;max-width:62ch;font-size:16px;color:var(--ink-soft)}
+
+.facts{display:grid;gap:16px;margin:0}
+.facts-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.facts-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.facts > div{border-top:1px solid var(--ink);padding-top:10px;min-width:0}
+.facts dt{font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft)}
+.facts dd{margin:4px 0 0;font-size:15px}
+@media (max-width:640px){.facts-3,.facts-2{grid-template-columns:minmax(0,1fr)}}
+
+/* ---------- projeto ---------- */
+.cover{position:relative;margin-bottom:clamp(64px,7vw,96px)}
+.slot-cover{aspect-ratio:21/8;border-radius:clamp(28px,5vw,72px)}
+.widget{
+  position:absolute;left:clamp(16px,9%,140px);bottom:-40px;width:min(230px,46%);
+  padding:16px 18px;border-radius:22px;background:var(--glass);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  box-shadow:0 18px 40px -18px var(--shadow), inset 0 0 0 1px var(--slot-edge);
+}
+.w-k{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft)}
+.widget ul{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:2px;font-size:clamp(16px,1.6vw,21px);letter-spacing:-.03em;line-height:1.18}
+@media (max-width:640px){
+  .slot-cover{aspect-ratio:4/3}
+  .cover{margin-bottom:24px}
+  .widget{position:static;width:auto;margin-top:12px}
+}
+
+.compare{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.cmp{border-radius:var(--r-card);padding:22px;min-height:180px;display:grid;align-content:space-between;gap:24px;min-width:0}
+.cmp-a{box-shadow:inset 0 0 0 1.5px var(--ink)}
+.cmp-b{background:var(--ink);color:var(--paper)}
+.cmp-b .ph{color:var(--on-ink-faint)}
+.cmp .tag{font-size:11.5px;text-transform:uppercase;letter-spacing:.06em}
+.cmp p{margin:0;font-size:17px;line-height:1.35;letter-spacing:-.01em}
+@media (max-width:560px){.compare{grid-template-columns:minmax(0,1fr)}}
+
+.prompt{background:var(--ink);color:var(--paper);border-radius:var(--r-card);overflow:hidden;min-width:0}
+.prompt-top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 12px 12px 22px;border-bottom:1px solid var(--on-ink-rule)}
+.prompt-top span{font-size:11.5px;text-transform:uppercase;letter-spacing:.06em}
+.prompt pre{margin:0;padding:22px;font-family:var(--f-mono);font-size:13px;line-height:1.7;white-space:pre-wrap;overflow-wrap:anywhere}
+.prompt pre .ph{color:var(--on-ink-faint)}
+.btn-pill{appearance:none;border:0;background:var(--paper);color:var(--ink);font:500 12px/1 var(--f-sans);padding:10px 16px;border-radius:var(--r-pill);cursor:pointer}
+.btn-pill:disabled{opacity:.35;cursor:not-allowed}
+
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.step{border-top:1.5px solid var(--ink);padding-top:12px;display:grid;gap:8px;align-content:start;min-width:0}
+.step-n{font-family:var(--f-mono);font-size:11.5px;color:var(--ink-soft)}
+.step h3{margin:0;font-size:19px;font-weight:500;letter-spacing:-.02em;line-height:1.15}
+.step p{margin:0;font-size:14px;color:var(--ink-soft)}
+@media (max-width:900px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.steps{grid-template-columns:minmax(0,1fr)}}
+
+.metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.metric{
+  display:grid;align-content:space-between;gap:28px;min-height:190px;padding:22px;min-width:0;
+  border-radius:var(--r-card);
+  background:linear-gradient(225deg,var(--slot-a) 0%,var(--slot-b) 48%,var(--cream) 100%);
+  box-shadow:inset 0 0 0 1px var(--slot-edge);
+}
+.m-v{font-size:clamp(48px,6vw,88px);font-weight:500;letter-spacing:-.05em;line-height:.9;font-variant-numeric:tabular-nums}
+.m-l{font-size:13px;line-height:1.35;color:var(--ink-soft)}
+@media (max-width:640px){.metrics{grid-template-columns:minmax(0,1fr)}.metric{min-height:140px}}
+
+.gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.g-wide{grid-column:1/-1;aspect-ratio:21/9}
+.g-sm{aspect-ratio:1/1}
+@media (max-width:640px){
+  .gallery{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .g-wide{aspect-ratio:4/3}
+  .g-sm .slot-label{padding:10px}
+}
+
+.links{display:flex;flex-wrap:wrap;gap:8px}
+
+.next{
+  display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:24px;
+  margin-top:clamp(24px,4vw,56px);padding-top:clamp(28px,4vw,48px);border-top:1px solid var(--ink);
+  text-decoration:none;color:inherit;
+}
+.next-big{font-size:clamp(48px,10vw,150px);line-height:.88;letter-spacing:-.055em;text-transform:uppercase;font-weight:500}
+.next-arrow{display:inline-block;transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.next:hover .next-arrow{transform:translateX(.12em)}
+.next-meta{font-size:12.5px;line-height:1.3;min-width:150px;max-width:220px;padding-bottom:.8em}
+.next-meta strong{display:block;font-weight:500}
+@media (max-width:560px){.next{grid-template-columns:minmax(0,1fr)}.next-meta{padding-bottom:0}}
+
+/* ---------- índice ---------- */
+.ix{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.ix li{border-bottom:1px solid var(--rule)}
+.ix a{
+  display:grid;grid-template-columns:64px minmax(0,1fr) minmax(0,.5fr) 40px;gap:16px;align-items:center;
+  padding:18px 0;text-decoration:none;border-radius:22px;
+  transition:background .3s,color .3s,padding .3s;
+}
+.ix-n{font-family:var(--f-mono);font-size:12px;color:var(--ink-soft)}
+.ix-t{font-size:clamp(22px,3.2vw,44px);line-height:1.02;letter-spacing:-.04em;font-weight:500;min-width:0}
+.ix-c{font-size:13px;color:var(--ink-soft)}
+.ix-go{justify-self:end;width:36px;height:36px;border-radius:50%;box-shadow:inset 0 0 0 1.5px currentColor;display:grid;place-items:center;font-size:15px}
+.ix a:hover{background:var(--ink);color:var(--paper);padding-inline:20px}
+.ix a:hover .ix-n,.ix a:hover .ix-c{color:var(--on-ink-faint)}
+@media (max-width:640px){.ix a{grid-template-columns:30px minmax(0,1fr) 36px;gap:12px}.ix-c{display:none}}
+
+.trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.card-link{
+  display:grid;grid-template-rows:auto 1fr auto;aspect-ratio:5/6;padding:22px;max-width:100%;
+  border-radius:var(--r-card);text-decoration:none;
+  background:linear-gradient(225deg,var(--slot-a) 0%,var(--slot-b) 48%,var(--cream) 100%);
+  box-shadow:inset 0 0 0 1px var(--slot-edge);
+  transition:transform .4s cubic-bezier(.2,.7,.2,1);
+}
+.card-link:hover{transform:translateY(-4px)}
+.cl-n{font-size:12px;color:var(--ink-soft)}
+.cl-t{align-self:center;justify-self:center;font-size:clamp(32px,3.8vw,56px);letter-spacing:-.05em;font-weight:500}
+.cl-go{display:flex;justify-content:space-between;gap:12px;font-size:12.5px}
+@media (max-width:760px){.trio{grid-template-columns:minmax(0,1fr)}.card-link{aspect-ratio:auto;min-height:190px}}
+
+/* ---------- sobre ---------- */
+.profile{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(20px,4vw,64px);margin-bottom:clamp(48px,6vw,88px)}
+.slot-portrait{aspect-ratio:4/5}
+.slot-portrait .wm{width:34%;height:auto;color:var(--ink)}
+.slot-label-bottom{position:absolute;left:0;right:0;bottom:14px}
+.profile-body{display:grid;align-content:start;gap:32px;min-width:0}
+@media (max-width:760px){.profile{grid-template-columns:minmax(0,1fr)}}
+
+.xp{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.xp li{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr) minmax(0,2fr);gap:16px;padding:18px 0;border-bottom:1px solid var(--rule)}
+.xp li > span{min-width:0}
+.x-p{font-family:var(--f-mono);font-size:12px;color:var(--ink-soft);padding-top:4px}
+.x-t{font-size:19px;font-weight:500;letter-spacing:-.02em;line-height:1.2}
+.x-e{font-size:14px;font-weight:400;color:var(--ink-soft);letter-spacing:0}
+.x-d{font-size:14px;color:var(--ink-soft)}
+@media (max-width:640px){.xp li{grid-template-columns:minmax(0,1fr);gap:6px}}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.skill{display:inline-flex;align-items:center;height:42px;padding:0 18px;border-radius:var(--r-pill);box-shadow:inset 0 0 0 1.5px var(--ink);font-size:14px;letter-spacing:-.01em}
+.skill-ghost{box-shadow:inset 0 0 0 1.5px var(--ink-faint);color:var(--ink-faint)}
+
+/* ---------- método ---------- */
+.tools{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px 16px}
+.tool{display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;align-items:start;border-top:1px solid var(--ink);padding-top:14px}
+.tool-ic{
+  width:44px;height:44px;border-radius:14px;display:grid;place-items:center;font-size:16px;font-weight:500;color:var(--ink-soft);
+  background:linear-gradient(225deg,var(--slot-a) 0%,var(--slot-b) 48%,var(--cream) 100%);
+  box-shadow:inset 0 0 0 1px var(--slot-edge);
+}
+.tool h3{margin:0;font-size:16px;font-weight:500;letter-spacing:-.015em;line-height:1.25}
+.tool p{margin:3px 0 0;font-size:13px;line-height:1.35;color:var(--ink-soft)}
+@media (max-width:900px){.tools{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.tools{grid-template-columns:minmax(0,1fr)}}
+
+.principles{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.principles li{padding:20px 0;border-bottom:1px solid var(--rule);font-size:clamp(18px,2vw,26px);letter-spacing:-.025em;line-height:1.25;max-width:44ch}
+
+/* ---------- contato ---------- */
+.channels{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.channels li{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,2fr) auto;gap:16px;align-items:center;padding:18px 0;border-bottom:1px solid var(--rule)}
+.ch-k{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft)}
+.ch-v{font-size:clamp(18px,2.2vw,28px);letter-spacing:-.03em;line-height:1.2;min-width:0;overflow-wrap:anywhere}
+.btn-line{
+  appearance:none;display:inline-flex;align-items:center;height:36px;padding:0 16px;border:0;border-radius:var(--r-pill);
+  background:transparent;box-shadow:inset 0 0 0 1.5px var(--ink);color:var(--ink);
+  font:500 12.5px/1 var(--f-sans);text-decoration:none;white-space:nowrap;cursor:pointer;transition:background .25s,color .25s;
+}
+.btn-line:hover{background:var(--ink);color:var(--paper)}
+.btn-line:disabled,.btn-line.is-off{box-shadow:inset 0 0 0 1.5px var(--ink-faint);color:var(--ink-faint);background:transparent;cursor:default}
+@media (max-width:640px){.channels li{grid-template-columns:minmax(0,1fr) auto;row-gap:6px}.ch-k{grid-column:1/-1}}
+.colophon{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:clamp(40px,6vw,80px);padding-top:14px;border-top:1px solid var(--ink);font-size:12px;color:var(--ink-soft)}
+
+/* ---------- dock (navegação) ---------- */
+.dock{
+  position:fixed;left:0;right:0;bottom:0;z-index:30;display:flex;justify-content:center;pointer-events:none;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));
+  padding-right:max(16px, env(safe-area-inset-right, 0px));
+  padding-bottom:calc(14px + env(safe-area-inset-bottom, 0px));
+}
+.dock-pill{
+  pointer-events:auto;display:flex;align-items:center;gap:2px;max-width:100%;overflow-x:auto;
+  scrollbar-width:none;background:var(--ink);border-radius:var(--r-pill);padding:5px;
+  box-shadow:0 14px 34px -14px var(--shadow);
+}
+.dock-pill::-webkit-scrollbar{display:none}
+.dock-pill a{flex:none;color:var(--paper);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:-.01em;padding:10px 14px;border-radius:var(--r-pill);transition:background .25s,color .25s;font-variant-numeric:tabular-nums}
+.dock-pill a:hover{background:var(--on-ink-rule)}
+.dock-pill a[aria-current="page"]{background:var(--paper);color:var(--ink)}
+.dock-pill .sep{flex:none;width:1px;height:18px;background:var(--on-ink-faint);opacity:.5;margin:0 4px}
+
+/* ---------- projeto: peças de estudo de caso ---------- */
+.slot-cover.has-media{aspect-ratio:2560/1100}
+.slot-cover.has-media img{object-position:0% 50%}
+.cover.has-cover .widget{left:auto;right:clamp(16px,6%,96px)}
+.cover.has-cover .cover-cap{right:auto;left:4px;text-align:left}
+.cover-cap{position:absolute;right:4px;bottom:-36px;margin:0;max-width:52%;text-align:right;font-size:12px;line-height:1.35;color:var(--ink-soft)}
+@media (max-width:640px){.cover-cap{position:static;max-width:none;text-align:left;margin-top:10px}}
+
+.arch{display:grid;gap:12px}
+.arch-flow{display:grid;grid-template-columns:minmax(0,1fr) 84px minmax(0,1.25fr) 84px minmax(0,1fr);align-items:stretch}
+.node{display:grid;gap:10px;align-content:start;min-width:0;padding:22px;border-radius:var(--r-card);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.node-hub{background:var(--ink);color:var(--paper);box-shadow:none}
+.node-soft{box-shadow:inset 0 0 0 1px var(--slot-edge);background:linear-gradient(225deg,var(--slot-a) 0%,var(--slot-b) 48%,var(--cream) 100%)}
+.node-tab{font-family:var(--f-mono);font-size:11.5px;color:var(--ink-soft)}
+.node-hub .node-tab{color:var(--on-ink-faint)}
+.node h3{margin:0;font-size:clamp(20px,1.9vw,26px);font-weight:500;letter-spacing:-.035em;line-height:1.08}
+.node p{margin:0;font-size:14px;line-height:1.45;color:var(--ink-soft)}
+.node-hub p{color:var(--on-ink-soft)}
+.io{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+.io span{font-size:12px;line-height:1.2;padding:6px 10px;border-radius:var(--r-pill)}
+.io .in{box-shadow:inset 0 0 0 1px currentColor}
+.io .calc{background:var(--signal);color:var(--on-signal)}
+.arrow{display:grid;justify-items:center;align-content:center;gap:6px;padding:0 6px;text-align:center;font-size:11.5px;line-height:1.25;color:var(--ink-soft)}
+.arrow b{font-size:26px;font-weight:400;line-height:1;color:var(--ink)}
+.arch-side{display:grid;grid-template-columns:minmax(0,1fr) 84px minmax(0,1fr);align-items:stretch}
+.arch-note{margin:6px 0 0;font-size:clamp(18px,1.8vw,24px);letter-spacing:-.025em;line-height:1.25;max-width:40ch}
+@media (max-width:900px){
+  .arch-flow{grid-template-columns:minmax(0,1fr)}
+  .arrow{grid-auto-flow:column;justify-content:start;padding:12px 22px}
+  .arrow b{transform:rotate(90deg)}
+}
+@media (max-width:900px){.arch-side{grid-template-columns:minmax(0,1fr)}}
+
+.anat{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.anat-k{font-size:12px;color:var(--ink-soft);margin-right:6px}
+.anat span:not(.anat-k){font-size:12.5px;height:30px;display:inline-flex;align-items:center;padding:0 12px;border-radius:var(--r-pill);box-shadow:inset 0 0 0 1px var(--ink)}
+.pviewer{display:grid;gap:12px;min-width:0}
+.ptabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:2px}
+.ptabs::-webkit-scrollbar{display:none}
+.ptab{appearance:none;flex:none;border:0;height:40px;padding:0 16px;border-radius:var(--r-pill);background:transparent;box-shadow:inset 0 0 0 1.5px var(--ink);color:var(--ink);font:500 13px/1 var(--f-sans);cursor:pointer;transition:background .25s,color .25s}
+.ptab span{font-family:var(--f-mono);font-size:11px;opacity:.6;margin-right:8px}
+.ptab[aria-selected="true"]{background:var(--ink);color:var(--paper)}
+.pmeta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:0;padding:18px 22px;border-bottom:1px solid var(--on-ink-rule)}
+.pmeta > div{min-width:0}
+.pmeta dt{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--on-ink-faint)}
+.pmeta dd{margin:5px 0 0;font-size:14px;line-height:1.4;color:var(--paper)}
+.prompt pre{color:var(--on-ink-soft)}
+.prompt pre .h{color:var(--paper);font-weight:500}
+.prompt pre .var{color:var(--signal-on-ink)}
+@media (max-width:640px){.pmeta{grid-template-columns:minmax(0,1fr)}}
+
+.eng{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.eng li{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,2.15fr);gap:12px 28px;padding:20px 0;border-bottom:1px solid var(--rule)}
+.eng-ref{display:grid;gap:4px;align-content:start;min-width:0}
+.eng-ref code{font-family:var(--f-mono);font-size:12px;color:var(--ink-soft)}
+.eng-ref strong{font-size:18px;font-weight:500;letter-spacing:-.02em;line-height:1.2}
+.eng-body{display:grid;gap:10px;min-width:0}
+.eng-body p{margin:0;max-width:62ch;font-size:14px;color:var(--ink-soft)}
+.fxbar{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:stretch;border-radius:14px;background:var(--cream);box-shadow:inset 0 0 0 1px var(--rule);overflow:hidden}
+.fxbar i{display:grid;place-items:center;padding:0 12px;border-right:1px solid var(--rule);font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:14px;color:var(--ink-faint)}
+.fxbar code{padding:12px 14px;font-family:var(--f-mono);font-size:12.5px;line-height:1.65;white-space:pre-wrap;overflow-wrap:anywhere;min-width:0}
+.fxbar .ref{font-weight:500;color:var(--signal)}
+.fxbar button{appearance:none;border:0;border-left:1px solid var(--rule);background:transparent;padding:0 14px;font:500 12px/1 var(--f-sans);color:var(--ink);cursor:pointer}
+.fxbar button:hover{background:var(--slot-b)}
+@media (max-width:640px){.eng li{grid-template-columns:minmax(0,1fr)}}
+
+.sim{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:12px}
+.sim-sheet{min-width:0;padding:20px;border-radius:var(--r-card);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.sim-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:14px;margin-bottom:14px}
+.sim-start label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft)}
+.sim-start input{width:170px;margin-top:4px;padding:8px 10px;border:0;border-radius:12px;background:var(--cream);box-shadow:inset 0 0 0 1px var(--rule);font:500 18px/1 var(--f-sans);letter-spacing:-.02em;color:var(--ink);font-variant-numeric:tabular-nums}
+.sim-actions{display:flex;flex-wrap:wrap;gap:8px}
+.sim-scroll{overflow-x:auto}
+.sim table{width:100%;min-width:480px;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
+.sim th{padding:8px 6px;border-bottom:1.5px solid var(--ink);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);text-align:right}
+.sim td{padding:3px 6px;border-bottom:1px solid var(--rule);text-align:right;white-space:nowrap}
+.sim th:first-child,.sim td:first-child{text-align:left;font-family:var(--f-mono);font-size:12.5px}
+.sim tbody input{width:100%;min-width:92px;padding:7px 6px;border:0;border-radius:8px;background:transparent;font:inherit;text-align:right;color:var(--ink)}
+.sim tbody input:hover{background:var(--slot-b)}
+.sim tbody input:focus{outline:2px solid var(--signal);outline-offset:-2px;background:var(--cream)}
+.sim input.bad{box-shadow:inset 0 0 0 1.5px var(--signal)}
+.sim .pos{color:var(--pos)}
+.sim .neg{color:var(--signal)}
+.sim .sim-s{font-weight:500}
+.sim .hint-row td{border-bottom:0;padding-top:4px;padding-bottom:0}
+.sim tbody input{background:var(--cream);box-shadow:inset 0 0 0 1px var(--rule)}
+.sim tfoot td{border-bottom:0;border-top:1.5px solid var(--ink);padding-block:10px;font-weight:500}
+.sim-side{display:grid;grid-template-rows:auto auto minmax(150px,1fr) auto;gap:12px;min-width:0;padding:22px;border-radius:var(--r-card);background:var(--ink);color:var(--paper)}
+.sim-k{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--on-ink-faint)}
+.sim-v{font-size:clamp(34px,4vw,56px);font-weight:500;letter-spacing:-.05em;line-height:.95;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.sim-v.neg{color:var(--signal-on-ink)}
+.sim-bars{display:flex;align-items:stretch;gap:6px;border-bottom:1px solid var(--on-ink-rule)}
+.sim-bars div{flex:1;display:grid;grid-template-rows:1fr auto;justify-items:center;gap:6px;min-width:0}
+.sim-bars em{align-self:end;display:block;width:100%;min-height:2px;border-radius:6px 6px 2px 2px;background:var(--paper);transition:height .35s cubic-bezier(.2,.7,.2,1)}
+.sim-bars em.neg{background:var(--signal)}
+.sim-bars em.none{background:var(--on-ink-rule)}
+.sim-bars span{font-family:var(--f-mono);font-size:10.5px;color:var(--on-ink-faint);padding-bottom:6px}
+.sim-state{font-size:13px;color:var(--on-ink-soft)}
+@media (max-width:860px){.sim{grid-template-columns:minmax(0,1fr)}}
+
+.prints{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 12px;align-items:start}
+.print{display:grid;gap:10px;align-content:start;margin:0;min-width:0}
+.print.full{grid-column:1/-1}
+.print.tall{grid-row:span 2}
+.print-frame{appearance:none;display:block;width:100%;border:0;padding:clamp(10px,2.2vw,32px);border-radius:var(--r-card);cursor:zoom-in;background:linear-gradient(225deg,var(--slot-a) 0%,var(--slot-b) 48%,var(--cream) 100%);box-shadow:inset 0 0 0 1px var(--slot-edge)}
+.print-frame img{display:block;width:100%;height:auto;border-radius:10px;box-shadow:0 22px 44px -24px var(--shadow);transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.print-frame:hover img{transform:translateY(-3px)}
+.print figcaption{display:flex;gap:10px;font-size:12.5px;line-height:1.4;color:var(--ink-soft)}
+.print figcaption b{flex:none;font-family:var(--f-mono);font-weight:400;color:var(--ink)}
+.note{display:flex;gap:10px;align-items:flex-start;margin:0;max-width:62ch;font-size:14px;color:var(--ink-soft)}
+.note::before{content:"";flex:none;width:8px;height:8px;margin-top:7px;border-radius:50%;background:var(--signal)}
+@media (max-width:640px){.prints{grid-template-columns:minmax(0,1fr)}.print.tall{grid-row:auto}}
+
+.lb{position:fixed;inset:0;z-index:60;display:grid;place-items:center;overflow:auto;cursor:zoom-out;background:var(--scrim);
+  padding:max(56px, calc(env(safe-area-inset-top, 0px) + 56px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px))}
+.lb img{max-width:100%;max-height:100%;border-radius:12px}
+.lb-x{position:fixed;top:calc(12px + env(safe-area-inset-top, 0px));right:max(16px, env(safe-area-inset-right, 0px));appearance:none;border:0;height:38px;padding:0 16px;border-radius:var(--r-pill);background:var(--paper);color:var(--ink);font:500 13px/1 var(--f-sans);cursor:pointer}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+
+<div class="page" lang="pt-BR">
+  <header class="rail">
+    <div>
+      <a class="brand" href="#inicio" aria-label="Ir para o índice">
+        <svg viewBox="0 0 120 120" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"><path d="M30 100 L60 22 L90 100"/><path d="M14 76 L106 60"/><path d="M98 16 V40 M86 28 H110"/></g></svg>
+        <span><strong>André Rodrigues</strong><br>Portfólio IA</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="view" data-view="inicio" aria-label="Índice">
+      <div class="poster">
+        <p class="p-thesis fade-off">Projetos de automação, conteúdo e criação feitos com inteligência artificial.</p>
+
+        <div class="p-mid">
+          <span class="p-q">Como funciona a vida hoje?</span>
+          <button class="switch" id="modeSwitch" type="button" aria-pressed="true" aria-label="Alternar entre com IA e sem IA">
+            <span class="knob" aria-hidden="true"></span>
+            <span class="opt opt-a">Com IA</span>
+            <span class="opt opt-b">Sem IA</span>
+          </button>
+          <span class="p-hint fade-off">Toque na chave para alternar</span>
+          <p class="p-drop" aria-live="polite">A produtividade cai.</p>
+        </div>
+
+        <div class="p-row p-bot fade-off">
+          <div class="p-sig">André Rodrigues<br>Portfólio de trabalho com uso de inteligência artificial</div>
+          <div class="p-mode" id="modeWrap">Modo de trabalho:<br><span class="dot" aria-hidden="true"></span><b id="modeVal">Com IA</b></div>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-head"><span class="chip chip-o">01</span><span class="chip chip-f">Apresentação</span></div>
+        <div class="sec-body">
+          <p class="lead" id="indexIntro"></p>
+        </div>
+      </div>
+
+      <div class="sec sec-full">
+        <div class="sec-head"><span class="chip chip-o">02</span><span class="chip chip-f">Projetos</span></div>
+        <div class="ix-wrap">
+          <ol class="ix" id="indexList"></ol>
+        </div>
+      </div>
+
+      <div class="sec sec-full sec-nb">
+        <div class="sec-head"><span class="chip chip-o">03</span><span class="chip chip-f">Mais capítulos</span></div>
+        <div class="trio" id="trio"></div>
+      </div>
+    </section>
+
+    <section class="view" data-view="sobre" aria-label="Sobre" hidden></section>
+    <section class="view" data-view="metodo" aria-label="Método e stack" hidden></section>
+    <section class="view" data-view="contato" aria-label="Contato" hidden></section>
+  </main>
+</div>
+
+<nav class="dock" aria-label="Abas do portfólio"><div class="dock-pill" id="dock"></div></nav>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Figura ampliada" hidden><button class="lb-x" type="button" id="lbClose">Fechar</button><img id="lbImg" alt=""></div>
+
+<script>
+(function(){
+'use strict';
+
+/* =====================================================================
+   CONTEÚDO DO PORTFÓLIO
+   Tudo que ficar vazio ("") aparece no site como [ espaço reservado ].
+   Para preencher, basta trocar os valores abaixo.
+   ===================================================================== */
+
+var APRESENTACAO = "Sou André Rodrigues, analista de marketing e diretor de arte, formando em Publicidade e Propaganda pela PUC. Há mais de 4 anos crio campanhas, conteúdo e identidades para marcas como Brahma, Banco BMG e Record. Hoje uso inteligência artificial como parte do meu jeito de trabalhar: para automatizar o que é repetitivo, criar mais rápido e ter mais tempo para pensar no que importa.";
+
+var PERFIL = {
+  nome: "André Rodrigues",
+  base: "São Paulo, BR",
+  formacao: "Publicidade e Propaganda (PUC) e demais cursos",
+  cursos: ["Marketing · University of Pennsylvania (Coursera), 2026", "Estratégias de Negócios e Marketing · Coursera, 2026", "Growth Essencial · LAJE, 2026", "CRM na Prática · RD Station, 2025", "A (R)evolução do Branding · LAJE, 2024", "Branding · Escola Conquer, 2022", "Certificações ANBIMA: CPA e C-PRO R (em preparação)"],
+  cargo: "Analista de Marketing Pleno",
+  foco: "IA aplicada a marketing, conteúdo e criação",
+  idiomas: "Português nativo · Inglês básico",
+  bio: "Comecei como designer, passei pela direção de arte e hoje trabalho com estratégia de marketing. No caminho, aprendi que a melhor ideia precisa de tempo para existir. É aí que a IA entra no meu trabalho: ela organiza, automatiza e acelera, para eu gastar energia com estratégia e criação.",
+  foto: "img/sobre-retrato.webp",
+  experiencias: [
+    { periodo: "set/2025 – nov/2026", cargo: "Analista de Marketing Pleno", empresa: "Record", descricao: "Calendário editorial e narrativas multiplataforma (TV nacional, digital e redes) de projetos de entretenimento. Liderei a comunicação do Bora de Bike SP, com a Prefeitura de São Paulo e a Virada Esportiva, em quatro edições de 8 a 14 mil pessoas." },
+    { periodo: "ago/2024 – set/2025", cargo: "Diretor de Arte e Estrategista de Conteúdo", empresa: "Agência Amper", descricao: "Conceitos de direção de arte para Brahma, Banco BMG, Festa do Peão de Barretos, Caldas Country e Jaguariúna Rodeo Festival, com desdobramento para digital, mídia exterior e impresso." },
+    { periodo: "ago/2023 – ago/2024", cargo: "Diretor de Arte Pleno", empresa: "Agência RF", descricao: "Direção criativa de campanhas políticas e institucionais vencedoras e de comerciais para TV nacional em horário nobre. Identidades e peças para FIEB Tech, Hipermercado Bergamini e rádios de várias regiões." },
+    { periodo: "set/2022 – set/2023", cargo: "Designer Júnior", empresa: "Agência RF", descricao: "Produção e desdobramento de peças para campanhas políticas, institucionais e comerciais em todos os canais." },
+    { periodo: "jan/2022 – jun/2022", cargo: "Estagiário de Marketing", empresa: "Pet Mais", descricao: "Peças para campanhas promocionais e evolução da identidade visual da marca." }
+  ],
+  habilidades: ["IA aplicada", "Engenharia de prompt", "Automação de processos", "Planejamento estratégico", "Estratégia de marca", "Estratégia de conteúdo", "Direção de arte", "Marketing de eventos", "Growth e CRM", "Análise de desempenho", "Gestão de projetos", "Pacote Adobe"]
+};
+
+/* Campos de cada projeto (todos opcionais):
+   ano, status, papel, publico, duracao, ferramentas: [],
+   contexto, solucao, antes, depois, ia, prompt,
+   etapas: [{ titulo, descricao }], resultados: [{ valor, rotulo }],
+   capa: "arquivo.jpg", galeria: [{ src, legenda }],
+   aprendizados, links: [{ rotulo, url }] */
+var PROJETOS = [
+  {
+    id: "p01", titulo: "Planilha financeira automatizada", categoria: "Automação",
+    tituloLinhas: ["Planilha financeira", "automatizada"],
+    ferramentas: ["Claude", "Google Sheets", "App da planilha do Breno", "Lançamento por áudio"],
+    capa: "img/p01-capa.webp",
+    capaLegenda: "Imagem ilustrativa: modelo prático de como a planilha funciona.",
+
+    contexto: "Comprei um apartamento na planta. Durante a obra, as parcelas vêm de todos os lados: mensais, trimestrais, semestrais e anuais. Para não quebrar o meu caixa nem o da minha noiva, a gente precisava de uma planilha que mostrasse o futuro, não só o mês atual. Encontramos a planilha do Breno, que eu assinei junto com os estudos dele. Ela já existia e é atualizada com o tempo, e o que eu mais gosto nela é a longevidade: dá para ver datas, entradas, saídas, o gasto diário e o saldo de meses e anos à frente.",
+    papel: "Ideia, integração e prompts",
+    publico: "Uso pessoal e do casal",
+    duracao: "Em uso diário desde 2026",
+    solucao: "A ideia foi minha: transformar o Claude na ponte que não existia. A planilha do Breno vive no app (App Store) e no site, e eu também mantenho uma cópia no Google Sheets. Não há integração entre eles. Agora, quando faço uma compra na rua, mando um áudio para o Claude. Ele entende o gasto, lança na planilha do Google Sheets e na plataforma do Breno, e os dois ficam sempre iguais.",
+    antes: "No fim do dia, eu levava cerca de 50 minutos abrindo o app do banco e lançando gasto por gasto, em dois lugares diferentes.",
+    depois: "Mando um áudio de uns 30 segundos na hora da compra. O Claude registra e atualiza as duas planilhas. O dia fecha sozinho.",
+
+    arquitetura: {
+      fluxo: [
+        { titulo: "Áudio no Claude", desc: "Na rua, mando um áudio: “gastei 32 reais no mercado”. O Claude entende valor, data, tipo e forma de pagamento.", digita: "Fala: o gasto do momento", calcula: "Organiza: valor, data e categoria", envia: "lança em segundos" },
+        { titulo: "Fluxo de caixa diário", desc: "No Google Sheets, cada mês tem Data, Entrada, Saída, Diário e Saldo. O saldo se projeta para os meses e anos seguintes.", digita: "Recebe: os lançamentos", calcula: "Calcula: saldo de cada dia", envia: "mesmo lançamento" },
+        { titulo: "App e site do Breno", desc: "A plataforma original da planilha, no celular e no navegador. O Claude replica o lançamento para tudo ficar igual.", calcula: "Sincronizado pelo Claude" }
+      ],
+      extras: [
+        { titulo: "Plano de contas", desc: "Salários, faculdade, contas da casa e todas as parcelas do apartamento, com a data de cada uma.", digita: "Registra: contas fixas e parcelas", calcula: "Calcula: sobra prevista", envia: "mostra o futuro" },
+        { titulo: "Painel do ano", desc: "Economia de cada mês, taxa de economia e o espaço para as metas: câmera, computador e setup.", calcula: "Calcula: economia e metas" }
+      ],
+      legenda: "Regra da arquitetura: falou, lançou. Cada gasto é registrado uma vez, por áudio, e aparece nos dois lugares."
+    },
+
+    ia: "O Claude faz o trabalho chato: transforma a minha fala em lançamento, escreve nas duas planilhas e confere se tudo bate. A IA também me ajudou a montar as fórmulas e a planejar as parcelas do apartamento. Todos os prompts seguem a mesma estrutura, para o resultado sair sempre no mesmo formato.",
+    prompts: [
+      {
+        titulo: "Lançamento por áudio",
+        objetivo: "Transformar um áudio curto em um lançamento certo, nas duas planilhas.",
+        tecnica: "Regras de interpretação fixas e confirmação curta no final.",
+        saida: "Lançamento registrado e uma linha de confirmação.",
+        texto: [
+          "# Papel",
+          "Você é meu assistente financeiro pessoal e cuida dos meus lançamentos diários.",
+          "",
+          "# Contexto",
+          "Uso a planilha do Breno em dois lugares: no app/site oficial e em uma cópia no Google Sheets, com as colunas Data, Entrada, Saída, Diário e Saldo. As duas precisam ficar sempre iguais.",
+          "",
+          "# Tarefa",
+          "Quando eu mandar um áudio ou mensagem curta:",
+          "1. Identifique valor, data (hoje, se eu não disser), descrição e forma de pagamento.",
+          "2. Gasto do dia a dia vai na coluna Diário. Conta fixa ou parcela vai em Saída. Dinheiro recebido vai em Entrada.",
+          "3. Lance na aba do ano certo, no bloco do mês e na linha do dia.",
+          "4. Replique o mesmo lançamento na plataforma do Breno.",
+          "",
+          "# Restrições",
+          "- \"Gastei\" sem detalhe significa pix ou débito na hora.",
+          "- Se o valor não estiver claro, pergunte antes de lançar.",
+          "- Nunca altere lançamentos antigos sem eu pedir.",
+          "",
+          "# Formato da resposta",
+          "Uma linha: \"Lançado: {VALOR} em {COLUNA}, {DATA}. Saldo do dia: {SALDO}.\""
+        ].join("\n")
+      },
+      {
+        titulo: "Parcelas do apartamento",
+        objetivo: "Encaixar as parcelas da obra no caixa sem surpresas.",
+        tecnica: "Projeção por período com alerta de mês apertado.",
+        saida: "Calendário de parcelas e meses de atenção.",
+        texto: [
+          "# Papel",
+          "Você é planejador financeiro de um casal que está pagando um apartamento na planta.",
+          "",
+          "# Contexto",
+          "Temos parcelas mensais, trimestrais, semestrais e anuais durante a obra. Os valores e datas estão na aba \"Contas mensais\". As entradas fixas também.",
+          "",
+          "# Tarefa",
+          "1. Monte o calendário de todas as parcelas até o fim da obra.",
+          "2. Cruze com as entradas e contas fixas de cada mês.",
+          "3. Aponte os meses em que o saldo projetado fica abaixo de {RESERVA_MÍNIMA}.",
+          "4. Sugira quanto guardar por mês para cobrir as parcelas maiores.",
+          "",
+          "# Restrições",
+          "- Use só os valores da planilha. Se faltar algum, pergunte.",
+          "- Valores em reais, com duas casas decimais.",
+          "",
+          "# Formato da resposta",
+          "Tabela mês a mês (Mês | Parcelas | Saldo projetado | Alerta) e três recomendações curtas."
+        ].join("\n")
+      },
+      {
+        titulo: "Fórmulas do fluxo",
+        objetivo: "Calcular datas e saldo sem arrastar fórmula linha a linha.",
+        tecnica: "Especificação exata do layout (colunas, linhas e limites).",
+        saida: "Lista com célula, fórmula e explicação de uma frase.",
+        texto: [
+          "# Papel",
+          "Você é especialista em fórmulas do Google Sheets.",
+          "",
+          "# Contexto",
+          "Na aba \"{ANO}\", cada mês ocupa 5 colunas (Data, Entrada, Saída, Diário, Saldo), seguidas de 1 coluna vazia. Janeiro fica em A:E. Os lançamentos vão da linha 3 à 33. A linha 34 guarda o saldo inicial e a 38, o saldo final.",
+          "",
+          "# Tarefa",
+          "1. Gere as datas do mês automaticamente, sem passar do último dia.",
+          "2. Calcule o saldo de cada dia: saldo inicial + entradas − saídas − gasto diário acumulados.",
+          "3. Leve o saldo final de cada mês para o saldo inicial do seguinte, inclusive na virada do ano.",
+          "",
+          "# Restrições",
+          "- Use ARRAYFORMULA para que uma fórmula cubra o mês inteiro.",
+          "- Separador de argumentos \";\" (planilha em português).",
+          "",
+          "# Formato da resposta",
+          "Lista com: célula de destino, fórmula e explicação em uma frase."
+        ].join("\n")
+      },
+      {
+        titulo: "Conferência semanal",
+        objetivo: "Garantir que a planilha e o app do Breno mostram o mesmo saldo.",
+        tecnica: "Comparação linha a linha com lista de divergências.",
+        saida: "Lista de diferenças e correções sugeridas.",
+        texto: [
+          "# Papel",
+          "Você é revisor das minhas finanças. Seja rigoroso e objetivo.",
+          "",
+          "# Contexto",
+          "Abaixo estão os lançamentos da semana no Google Sheets e na plataforma do Breno.",
+          "",
+          "# Tarefa",
+          "1. Compare as duas listas dia a dia.",
+          "2. Aponte lançamentos que faltam, duplicados ou com valor diferente.",
+          "3. Confirme se o saldo final da semana é igual nos dois lugares.",
+          "",
+          "# Restrições",
+          "- Não corrija nada sozinho. Liste e espere minha confirmação.",
+          "",
+          "# Formato da resposta",
+          "Tabela: Data | Sheets | App do Breno | Diferença | Correção.",
+          "",
+          "{LANÇAMENTOS_DA_SEMANA}"
+        ].join("\n")
+      }
+    ],
+
+    engenharia: [
+      { ref: "2026!A3", nome: "Datas do mês", formula: "=ARRAYFORMULA(IF(SEQUENCE(31)<=DAY(EOMONTH(DATE(2026;1;1);0)); DATE(2026;1;1)+SEQUENCE(31)-1; \"\"))", nota: "Gera os dias do mês e deixa em branco o que passa do fim do mês. Em fevereiro, a lista para no dia 28." },
+      { ref: "2026!E3", nome: "Saldo de cada dia", formula: "=ARRAYFORMULA(IF(D3:D33=\"\"; \"\"; E$34+SUMIF(ROW(A3:A33); \"<=\"&ROW(A3:A33); B3:B33-C3:C33-D3:D33)))", nota: "Saldo inicial + entradas − saídas − gasto diário, somados até cada dia. Uma fórmula cobre o mês inteiro." },
+      { ref: "E38 · K34 · '2027'!E34", nome: "Saldo de um mês para o outro", formula: "E38         =E34+SUM(B3:B33)-SUM(C3:D33)\nK34         =E38\n'2027'!E34  ='2026'!BS38", nota: "O saldo final de cada mês vira o saldo inicial do seguinte. É isso que dá a longevidade: dá para enxergar anos à frente." },
+      { ref: "Economia!D4", nome: "Saídas do mês", formula: "=SUM(OFFSET('2026'!$C$3; 0; (ROW()-4)*6; 31; 2))", nota: "Soma contas e gasto diário do mês certo. O OFFSET pula de bloco em bloco, então a mesma fórmula serve de janeiro a dezembro." },
+      { ref: "Economia!F4", nome: "Taxa de economia", formula: "=IFERROR(E4/C4; 0)", nota: "Quanto da renda do mês sobrou. É o número que mostra se as metas estão no caminho." },
+      { ref: "Economia!H9", nome: "Minigráfico", formula: "=SPARKLINE(E4:E15; {\"charttype\"\\\"column\"; \"negcolor\"\\\"#C5221F\"})", nota: "Gráfico de colunas dentro da própria célula, com a economia de cada mês." },
+      { ref: "2026!B3:D33", nome: "Validação de dados", formula: "Dados › Validação › Número maior ou igual a 0 › Rejeitar entrada", nota: "Impede texto ou valor negativo nas colunas de lançamento, o que quebraria as somas." }
+    ],
+
+    demo: "fluxo",
+
+    etapas: [
+      { titulo: "Assinatura", descricao: "Assinei a planilha e os estudos do Breno para entender o método. Era a que mais fazia sentido para o momento do apartamento." },
+      { titulo: "A ideia", descricao: "Percebi que o problema não era a planilha, era o tempo de lançar. A ideia de usar o Claude como ponte foi minha." },
+      { titulo: "Estrutura com IA", descricao: "Com o Claude, montei a cópia no Google Sheets, as fórmulas e o prompt de lançamento por áudio." },
+      { titulo: "Rotina", descricao: "Hoje lanço por áudio na hora da compra e faço uma conferência semanal entre a planilha e o app." }
+    ],
+    resultados: [
+      { valor: "−92%", rotulo: "de tempo: de 50 min por dia para cerca de 4 min (≈ 8 áudios de 30 s)" },
+      { valor: "23 h", rotulo: "devolvidas por mês que antes iam para lançar gastos" },
+      { valor: "32 mil", rotulo: "reais em metas conquistadas com o planejamento: câmera (R$ 15 mil), computador (R$ 9 mil) e setup (R$ 8 mil)" }
+    ],
+
+    orcamento: {
+      frase: "Quanto custa essa automação? Custa ter paz com o próprio dinheiro. E sai mais barato do que parece.",
+      itens: [
+        { valor: "R$ 22", rotulo: "por mês · assinatura do Breno: planilha, app, site e curso" },
+        { valor: "R$ 100", rotulo: "por mês · assinatura do Claude, que faz os lançamentos e a integração" },
+        { valor: "R$ 122", rotulo: "por mês no total · cerca de R$ 4 por dia para ter o caixa sob controle" }
+      ]
+    },
+    galeriaTitulo: "Exemplo prático",
+    galeriaNota: "Prints da estrutura real de quem usa a solução do mesmo jeito: mesmas abas, colunas e fórmulas. Todos os valores são fictícios, para proteger dados pessoais.",
+    galeria: [
+      { src: "img/p01-fluxo-2026.webp", w: 2940, h: 2094, formato: "full", legenda: "Aba 2026 · fluxo de caixa diário: entradas, contas, gasto de cada dia e o saldo projetado." },
+      { src: "img/p01-contas-mensais.webp", w: 2088, h: 2050, legenda: "Contas mensais · salários, contas da casa e as parcelas mensais, trimestrais, semestrais e anuais do apartamento." },
+      { src: "img/p01-economia.webp", w: 2272, h: 1182, legenda: "Economia · painel do ano com a taxa de economia de cada mês e o minigráfico." }
+    ],
+
+    aprendizados: "A melhor automação é a que some da rotina. Eu não precisava de uma planilha nova, precisava parar de perder 50 minutos por dia com ela. Com a IA como ponte entre ferramentas que não conversam, o controle financeiro virou um áudio de 30 segundos, e sobrou tempo e dinheiro para o apartamento e para equipar a minha profissão.",
+    links: []
+  },
+  {
+    id: "p02", titulo: "Paz Energy", categoria: "Comercial com IA",
+    tituloLinhas: ["Paz Energy"],
+    subtitulo: "Comercial de 45 segundos feito do zero com inteligência artificial · campanha “De pé na largada”",
+    ferramentas: ["Claude", "Higgsfield", "Nano Banana 2", "Seedance 2.5"],
+    capa: "img/p02-t_12_5.webp",
+    capaLegenda: "Frame do filme · o atleta da campanha em sprint na pista.",
+
+    contexto: "A pergunta era simples: dá para fazer um comercial com cara de produção grande sem câmera, sem estádio, sem atleta e sem equipe de filmagem? Para testar, criei a Paz Energy, uma bebida energética de energia limpa, e um filme de 45 segundos para a campanha “De pé na largada”. Do roteiro ao último frame, tudo foi feito com inteligência artificial e dirigido por mim.",
+    papel: "Ideia, roteiro, direção de arte e prompts",
+    publico: "Projeto de estudo · marca fictícia",
+    duracao: "45 s de filme · 16:9 · 24 fps",
+    solucao: "Montei um pipeline em etapas. O Claude transformou a ideia em roteiro, decupagem e prompts profissionais. O Nano Banana 2 e o Seedream criaram o personagem, os cenários e a lata. O Seedance 2.5, dentro do Higgsfield, deu movimento a cada frame, e a montagem final saiu no Premiere. O segredo foi a consistência: o mesmo atleta, a mesma luz de fim de tarde e a mesma lata do primeiro ao último plano.",
+    antes: "Um filme assim pediria estádio alugado, atleta, equipe de câmera, luz, produto físico, dias de diária e semanas de pós-produção.",
+    depois: "Um personagem criado do zero, frames gerados e animados por IA e a edição feita por uma pessoa só.",
+
+    video: { src: "img/p02-filme.mp4", poster: "img/p02-t_0_8.webp", legenda: "Filme completo · 45 s. Ative o som." },
+
+    marca: {
+      texto: "Paz é energia sem ansiedade: disposição para quem treina cedo, com a calma de quem sabe onde quer chegar. O nome é curto e fala de equilíbrio, e o logotipo traduz isso em movimento. As letras P, A e Z nascem de linhas horizontais, como velocidade que não perde o controle.",
+      logo: "img/p02-logo.webp",
+      fatos: [
+        ["Nome", "Paz Energy"],
+        ["Assinatura", "Better Energy"],
+        ["Sabor herói", "Wild Watermelon, em vermelho melancia"],
+        ["Linha", "Três sabores, em vermelho, verde e amarelo"],
+        ["Campanha", "“De pé na largada”"],
+        ["Território", "Corrida de rua e treino ao amanhecer"]
+      ]
+    },
+
+    personagem: {
+      texto: "O atleta foi criado do zero com IA. Antes de qualquer cena, gerei uma folha de personagem com cinco ângulos de corpo e cinco expressões: neutro, sorriso, esforço com suor, cansaço e calma. Essa folha virou a referência fixa de todos os planos, para o rosto, o bigode, o boné e o figurino não mudarem de cena para cena.",
+      imagem: "img/p02-personagem.webp", w: 2000, h: 1116,
+      tracos: ["Boné branco", "Regata preta", "Manguitos pretos", "Bigode marcante", "Relógio esportivo", "Corrente prata", "Tênis com sola coral"]
+    },
+
+    arquiteturaTitulo: "Pipeline",
+    arquitetura: {
+      fluxo: [
+        { titulo: "Ideia e roteiro", desc: "No Claude, a ideia virou roteiro em três atos, decupagem plano a plano e um prompt técnico para cada cena.", digita: "Entra: o conceito da campanha", calcula: "Sai: roteiro e prompts", envia: "prompts por plano" },
+        { titulo: "Frames", desc: "Nano Banana 2 e Seedream geram cada plano como foto: enquadramento, lente, luz e personagem sempre iguais.", digita: "Entra: prompt + referências", calcula: "Sai: o frame do plano", envia: "frame aprovado" },
+        { titulo: "Movimento", desc: "No Higgsfield, o Seedance 2.5 anima cada frame com movimento de câmera e de corpo realistas.", calcula: "Sai: clipes de 5 s" }
+      ],
+      extras: [
+        { titulo: "Referências fixas", desc: "A folha do personagem e a lata da Paz, feitas no Freepik e no Seedream, entram em todos os prompts.", digita: "Entra: personagem e produto", calcula: "Garante: consistência", envia: "clipes e frames" },
+        { titulo: "Montagem", desc: "No Premiere Pro, os clipes viram filme: ritmo, cor, tipografia, trilha e assinatura final.", calcula: "Sai: o filme de 45 s" }
+      ],
+      legenda: "Regra do pipeline: nenhum frame é gerado sem a folha do personagem e a lata como referência."
+    },
+
+    ia: "A IA trabalhou em três frentes: escrever, gerar e animar. O Claude fez o papel de roteirista e diretor de fotografia, traduzindo a ideia em prompts técnicos com lente, luz e movimento. Os modelos de imagem e vídeo executaram plano a plano, sempre a partir das mesmas referências.",
+    estrutura: ["Sujeito", "Ação", "Câmera", "Luz", "Consistência"],
+    prompts: [
+      {
+        titulo: "Roteiro e decupagem",
+        objetivo: "Transformar a ideia da campanha em um filme planejado plano a plano.",
+        tecnica: "Briefing completo e saída em tabela, com um prompt de imagem e um de vídeo por plano.",
+        saida: "Roteiro em três atos e decupagem com prompts.",
+        texto: [
+          "# Papel",
+          "Você é diretor de criação e roteirista de publicidade esportiva.",
+          "",
+          "# Contexto",
+          "Marca: Paz Energy, bebida energética de energia limpa. Assinatura: \"Better Energy\". Campanha: \"De pé na largada\". Público: corredores amadores de 20 a 35 anos. Filme de 45 s, 16:9.",
+          "",
+          "# Tarefa",
+          "1. Escreva um roteiro em três atos: concentração, explosão e recompensa com o produto.",
+          "2. Faça a decupagem plano a plano com tempo, enquadramento, lente, movimento de câmera e luz.",
+          "3. Para cada plano, escreva um prompt de imagem e um prompt de vídeo, em inglês.",
+          "",
+          "# Restrições",
+          "- Luz de fim de tarde (golden hour) em todos os planos externos.",
+          "- O mesmo atleta do início ao fim, conforme a folha de personagem.",
+          "- O produto só aparece no terceiro ato.",
+          "- Nenhum texto dentro das imagens geradas.",
+          "",
+          "# Formato da resposta",
+          "Tabela: Plano | Tempo | Descrição | Prompt de imagem | Prompt de vídeo."
+        ].join("\n")
+      },
+      {
+        titulo: "Folha do personagem",
+        objetivo: "Criar um atleta que possa ser repetido em todos os planos.",
+        tecnica: "Character sheet com ângulos e expressões em fundo neutro.",
+        saida: "Uma imagem de referência com 10 painéis.",
+        texto: [
+          "Character turnaround sheet of a male amateur runner, late 20s, slim athletic build,",
+          "short dark hair, thick brown mustache, light stubble.",
+          "",
+          "Wardrobe: white running cap, black running singlet, black arm sleeves,",
+          "black split shorts, white crew socks, light grey running shoes with coral-pink soles,",
+          "black sports watch, thin silver chain.",
+          "",
+          "Top row, full body: front, three-quarter, left profile, right profile, back.",
+          "Bottom row, close-up expressions: neutral, big smile, exhausted with sweat,",
+          "frustrated, calm.",
+          "",
+          "Plain light grey studio background, soft even lighting, photorealistic, 85mm lens,",
+          "identical face and outfit in every panel. Aspect ratio 16:9."
+        ].join("\n")
+      },
+      {
+        titulo: "Lata e splash",
+        objetivo: "Gerar o product shot de cada sabor com cara de estúdio.",
+        tecnica: "Descrição técnica de fotografia de alta velocidade, com o sabor como variável.",
+        saida: "Frame de produto pronto para animar.",
+        texto: [
+          "Commercial product shot of a 473 ml white aluminum can.",
+          "Brand \"PAZ\" in bold italic letters built from horizontal speed lines,",
+          "small serif text \"Better Energy\", flavor \"{SABOR}\".",
+          "",
+          "The can floats at the center over a saturated {COR_DO_SABOR} seamless background.",
+          "A stream of sparkling water pours onto the top and bursts into a splash crown.",
+          "Two {FRUTA} wedges and small cubes fly around the can.",
+          "",
+          "Condensation droplets, studio rim light, high-speed photography,",
+          "sharp label, 8k, premium beverage advertising look."
+        ].join("\n")
+      },
+      {
+        titulo: "Animação do sprint",
+        objetivo: "Dar movimento real ao frame sem perder o rosto do personagem.",
+        tecnica: "Câmera, ação e física descritas separadamente, com trava de consistência.",
+        saida: "Clipe de 5 s em 24 fps.",
+        texto: [
+          "[Referências: frame do plano 07 + folha do personagem]",
+          "",
+          "The runner sprints along the outer lane of an athletics track at golden hour.",
+          "Camera tracks from the side at running speed, low angle, slight handheld shake.",
+          "Warm sun flare behind the trees, stadium lights out of focus.",
+          "Realistic muscle motion, cloth movement and shoes hitting the track.",
+          "",
+          "Keep face, mustache, white cap and outfit identical to the references.",
+          "5 seconds, 24 fps, cinematic, no text on screen."
+        ].join("\n")
+      }
+    ],
+
+    storyboard: [
+      { t: "00:00", titulo: "Abertura", desc: "O logo PAZ sobre a pista vazia.", src: "img/p02-t_0_8.webp" },
+      { t: "00:02", titulo: "Concentração", desc: "O logo se dissolve sobre o atleta.", src: "img/p02-t_2_5.webp" },
+      { t: "00:04", titulo: "O olhar", desc: "Ele encara a câmera antes da largada.", src: "img/p02-t_4_5.webp" },
+      { t: "00:06", titulo: "A pista", desc: "De costas, o caminho à frente.", src: "img/p02-t_6_5.webp" },
+      { t: "00:08", titulo: "Largada", desc: "O primeiro sprint, de perfil.", src: "img/p02-t_8_5.webp" },
+      { t: "00:10", titulo: "Detalhe", desc: "O tênis toca a pista.", src: "img/p02-t_10_5.webp" },
+      { t: "00:12", titulo: "Plano aberto", desc: "Sprint com o sol baixo ao fundo.", src: "img/p02-t_12_5.webp" },
+      { t: "00:14", titulo: "Salto", desc: "Contra o céu, câmera baixa.", src: "img/p02-t_14_5.webp" },
+      { t: "00:16", titulo: "Vista aérea", desc: "A sombra longa na curva.", src: "img/p02-t_16_5.webp" },
+      { t: "00:18", titulo: "Chegada", desc: "Correndo em direção à câmera.", src: "img/p02-t_18_5.webp" },
+      { t: "00:20", titulo: "Produto", desc: "A lata na mureta da pista.", src: "img/p02-t_20_5.webp" },
+      { t: "00:26", titulo: "Better Energy", desc: "A mão pega a lata.", src: "img/p02-t_26_5.webp" },
+      { t: "00:32", titulo: "Estúdio", desc: "A lata ganha forma no vermelho.", src: "img/p02-t_32_5.webp" },
+      { t: "00:34", titulo: "Splash", desc: "Água, melancia e respingos.", src: "img/p02-t_34_5.webp" },
+      { t: "00:36", titulo: "Linha de sabores", desc: "Os três sabores lado a lado.", src: "img/p02-t_36_5.webp" },
+      { t: "00:44", titulo: "Assinatura", desc: "“Um novo mundo por IA.”", src: "img/p02-t_44_5.webp" }
+    ],
+
+    stack: [
+      { nome: "Claude", uso: "Roteiro, decupagem e prompts profissionais" },
+      { nome: "Higgsfield", uso: "Plataforma de geração e animação" },
+      { nome: "Freepik", uso: "Imagens de referência e variações" },
+      { nome: "Nano Banana 2", uso: "Google · personagem e cenas" },
+      { nome: "Seedream 5", uso: "Lata, product shots e cenários" },
+      { nome: "Seedream 2.5", uso: "Variações de cena e ajustes" },
+      { nome: "Seedance 2.5", uso: "Animação de cada frame" },
+      { nome: "Premiere Pro", uso: "Montagem, cor e trilha" }
+    ],
+
+    etapas: [
+      { titulo: "Conceito", descricao: "Criei a marca, o posicionamento “Better Energy” e a ideia da campanha: a energia de quem já está de pé na largada." },
+      { titulo: "Roteiro com IA", descricao: "Com o Claude, escrevi o roteiro, a decupagem e os prompts técnicos de cada plano." },
+      { titulo: "Geração", descricao: "Criei a folha do personagem, a lata e os frames, testando variações até cada plano ficar no padrão de comercial." },
+      { titulo: "Animação e edição", descricao: "Animei os frames com o Seedance 2.5 no Higgsfield e montei o filme, a cor e a trilha no Premiere." }
+    ],
+    resultados: [
+      { valor: "45 s", rotulo: "de filme publicitário em 16:9, do roteiro à assinatura" },
+      { valor: "16", rotulo: "planos decupados, com personagem, luz e produto consistentes" },
+      { valor: "0", rotulo: "câmeras, estúdios ou atores reais na produção" }
+    ],
+
+    galeriaTitulo: "Frames em destaque",
+    galeriaNota: "Clique em qualquer frame para ampliar.",
+    galeria: [
+      { src: "img/p02-t_14_5.webp", w: 1600, h: 900, formato: "full", legenda: "O salto · plano 08, câmera baixa contra o céu." },
+      { src: "img/p02-t_34_5.webp", w: 1600, h: 900, legenda: "Splash · a lata Wild Watermelon no estúdio vermelho." },
+      { src: "img/p02-t_36_5.webp", w: 1600, h: 900, legenda: "Linha de sabores · vermelho, verde e amarelo." }
+    ],
+
+    aprendizados: "Em vídeo com IA, o difícil não é gerar uma imagem bonita, é gerar a mesma imagem bonita vinte vezes. A folha de personagem e a lata como referências fixas resolveram a consistência. E o Claude virou meu diretor de fotografia de bolso: transformar a ideia em prompts técnicos, com lente, luz e movimento, foi o que separou um resultado amador de um comercial.",
+    links: []
+  },
+  {
+    id: "p03", titulo: "Contagiro", categoria: "Produto · CRM",
+    tituloLinhas: ["Contagiro"],
+    subtitulo: "CRM de oficinas para autopeças · o conta-giros da sua carteira de oficinas",
+    ferramentas: ["Claude Code", "Next.js", "Vercel + Supabase", "SheetJS"],
+    capa: "img/p03-capa.webp",
+    capaLegenda: "Demonstração com dados fictícios · visão do diretor e, no celular, a lista do vendedor.",
+
+    contexto: "Uma autopeça vive de oficinas que compram toda semana. Quando uma delas esfria, ninguém percebe: o sistema registra a venda, mas não avisa que a Mecânica X parou de comprar há 37 dias. Trabalhei quase dois anos no marketing de uma autopeça de São Paulo com cerca de 250 oficinas recorrentes e vi esse dinheiro escapar em silêncio. O vendedor troca, a carteira vai embora com ele e o dono só descobre a queda no fechamento do mês.",
+    papel: "Produto, código, marca e proposta comercial",
+    publico: "Autopeças e distribuidoras que vendem para oficinas",
+    duracao: "MVP pronto e testado · nov/2026",
+    solucao: "Criei o Contagiro, um CRM feito só para isso. Toda sexta, a autopeça exporta a planilha de vendas do sistema que já usa e arrasta para o Contagiro. Em segundos, cada oficina ganha um status (fria, atenção, ativa ou em alta), comparada com o próprio ritmo de compra. O vendedor abre a aba Hoje no celular, chama no WhatsApp com um toque e registra o contato em 10 segundos. O diretor vê faturamento, margem, carteira e o desempenho de cada vendedor.",
+    antes: "Relatório do sistema no fim do mês, carteira na cabeça do vendedor e oficina perdida sem ninguém perceber.",
+    depois: "Alerta toda semana, lista do dia para cada vendedor e os 12 meses de cada oficina em uma tela só.",
+
+    blocosA: [
+      { tipo: "gallery", titulo: "O produto", nota: "Telas da demonstração, com dados fictícios. Clique para ampliar.", itens: [
+        { src: "img/p03-hoje.webp", w: 2000, h: 1333, formato: "full", legenda: "Hoje · retornos combinados, oficinas frias e em atenção, com WhatsApp e registro de contato em cada cartão." },
+        { src: "img/p03-visao-geral.webp", w: 2000, h: 1333, legenda: "Visão geral · faturamento, oficinas em alerta, margem, saúde da carteira e 12 meses de vendas." },
+        { src: "img/p03-carteira.webp", w: 2000, h: 1333, legenda: "Carteira · todas as oficinas, com status, tendência e último contato." },
+        { src: "img/p03-ficha.webp", w: 2000, h: 1333, legenda: "Ficha da oficina · motivo do alerta, 12 meses de compra e leitura automática." },
+        { src: "img/p03-importar.webp", w: 2000, h: 1333, legenda: "Importar planilha · arrastar o arquivo de sexta, conferir e confirmar." },
+        { src: "img/p03-equipe.webp", w: 2000, h: 1333, formato: "full", legenda: "Equipe · desempenho por vendedor, perfis de acesso por número e cadastro de clientes." }
+      ]},
+      { tipo: "cards", titulo: "Facilidade de uso", lead: "Foi desenhado para quem está no balcão e na rua, não para quem gosta de software.", itens: [
+        { titulo: "Sem integração", desc: "Lê a planilha que o sistema da loja já exporta: xlsx, xls ou csv. Nada para instalar no servidor." },
+        { titulo: "Funciona no celular", desc: "Abre no navegador. O vendedor começa o dia pela aba Hoje." },
+        { titulo: "WhatsApp em 1 toque", desc: "O contato da oficina abre com a mensagem pronta." },
+        { titulo: "Registro em 10 segundos", desc: "Ligou, mandou mensagem ou visitou: um toque e fica no histórico." },
+        { titulo: "A carteira fica na empresa", desc: "Vendedores entram por número. Se alguém sai, a carteira continua no número." },
+        { titulo: "Errou? Desfaz", desc: "Repetidos são detectados e uma importação inteira pode ser desfeita." }
+      ]}
+    ],
+
+    arquiteturaTitulo: "Como funciona",
+    arquitetura: {
+      fluxo: [
+        { titulo: "Planilha do sistema", desc: "Toda sexta às 17h, a loja exporta as vendas da semana do sistema que já usa (o ERP).", digita: "Entra: vendas da semana", calcula: "Sem integração", envia: "arrasta o arquivo" },
+        { titulo: "Importação inteligente", desc: "Lê datas e valores no padrão brasileiro, conta pedidos distintos, ignora repetidos e lembra o mapeamento de colunas.", calcula: "Sai: base limpa", envia: "base atualizada" },
+        { titulo: "Motor de alertas", desc: "Cada oficina é comparada com o próprio ritmo e com a média de 12 meses. Quem compra todo dia e quem compra todo mês têm réguas diferentes.", calcula: "Sai: fria, atenção, ativa, em alta" }
+      ],
+      extras: [
+        { titulo: "Aba Hoje · vendedor", desc: "A lista do dia: quem ligar primeiro, com o motivo, o WhatsApp e o registro do contato.", digita: "Registra: contatos", calcula: "Sai: oficina reativada", envia: "contatos e pedidos" },
+        { titulo: "Visão do diretor", desc: "Faturamento líquido e bruto, descontos, margem, a receber, ranking de vendedores e saúde da carteira.", calcula: "Sai: decisão com dado" }
+      ],
+      legenda: "Regra do produto: nenhum alerta sem ação. Toda oficina fria aparece com o motivo, o telefone e um botão para registrar o contato."
+    },
+
+    blocosA2: [
+      { tipo: "decisoes", titulo: "Decisões de produto", lead: "O plano inicial acertava a dor, mas teria quebrado na primeira semana de uso. Estas são as correções que já estão no produto.", itens: [
+        ["Identificar o cliente pelo nome", "O nome muda e se repete entre filiais", "O cliente é o código do sistema; o nome vem do cadastro e é editável"],
+        ["Contar uma venda por linha", "A exportação por item repete o pedido e infla o ticket", "Conta pedidos distintos e avisa quando a planilha vem por item"],
+        ["Subir a planilha e pronto", "Reimportar o mesmo arquivo duplicaria o faturamento", "Detecta linhas repetidas e permite desfazer a importação inteira"],
+        ["Abrir o CSV como vem", "03/11 virava 11 de março e R$ 1.250,40 virava R$ 1,25", "Leitura no padrão brasileiro e acentos de sistemas antigos"],
+        ["Alerta de queda mês contra mês", "Oficina que compra todo dia e a que compra todo mês teriam a mesma régua", "Cada oficina é comparada com o próprio ritmo e com a média de 12 meses"],
+        ["Dashboard igual para todos", "Vendedor vendo o faturamento da empresa inteira", "Vendedor vê só a carteira dele; o diretor vê tudo"],
+        ["Alerta sem ação", "Alerta sem telefone não vira ligação", "WhatsApp com mensagem pronta e registro de contato em 10 segundos"]
+      ]}
+    ],
+
+    ia: "Construí o Contagiro com o Claude como sócio técnico: da conversa de descoberta com o dono da loja ao código, aos testes, ao nome e à proposta comercial. Os testes feitos com a IA acharam erros que teriam quebrado o produto na primeira semana, como datas brasileiras lidas no formato americano.",
+    prompts: [
+      {
+        titulo: "Descoberta e escopo",
+        objetivo: "Transformar a conversa com o dono da loja em um escopo de produto enxuto.",
+        tecnica: "Entrevista estruturada, com o que entra, o que fica de fora e os riscos.",
+        saida: "Escopo do piloto, metas de 90 dias e riscos.",
+        texto: [
+          "# Papel",
+          "Você é gerente de produto de software B2B para o varejo de autopeças.",
+          "",
+          "# Contexto",
+          "Uma autopeça de São Paulo vende para cerca de 250 oficinas recorrentes. O ERP registra tudo, mas ninguém percebe quando uma oficina para de comprar. Vendedores mudam com frequência. A loja consegue exportar as vendas em planilha toda semana.",
+          "",
+          "# Tarefa",
+          "1. Defina o problema em uma frase e o objetivo do piloto.",
+          "2. Liste o que entra no MVP e o que fica de fora, com o motivo.",
+          "3. Proponha metas mensuráveis para os primeiros 90 dias.",
+          "4. Liste os riscos (técnicos, de uso e comerciais) com um plano para cada um.",
+          "",
+          "# Restrições",
+          "- Nenhuma integração com o ERP no MVP.",
+          "- Tem que funcionar no navegador do celular do vendedor.",
+          "",
+          "# Formato da resposta",
+          "Seções curtas e tabelas: Escopo | Fora do escopo | Metas | Riscos."
+        ].join("\n")
+      },
+      {
+        titulo: "Motor de alertas",
+        objetivo: "Classificar cada oficina sem tratar todas com a mesma régua.",
+        tecnica: "Regras explícitas, casos de borda e exemplos numéricos para validar.",
+        saida: "Regras de status e casos de teste.",
+        texto: [
+          "# Papel",
+          "Você é analista de dados de vendas B2B.",
+          "",
+          "# Contexto",
+          "Tenho 12 meses de vendas por oficina (data, pedido, valor líquido, vendedor). Algumas oficinas compram todo dia; outras, uma vez por mês.",
+          "",
+          "# Tarefa",
+          "1. Defina os status Fria, Atenção, Ativa e Em alta.",
+          "2. Compare cada oficina com o próprio intervalo médio de compra e com a média de 12 meses, não com as outras.",
+          "3. Para cada alerta, gere uma frase de motivo que o vendedor entenda.",
+          "4. Liste casos de borda: oficina nova, compra única grande, sazonalidade de fim de ano.",
+          "",
+          "# Restrições",
+          "- Regras simples, explicáveis ao dono da loja.",
+          "- Nada de alerta sem motivo escrito.",
+          "",
+          "# Formato da resposta",
+          "Tabela de regras e 10 casos de teste com resultado esperado."
+        ].join("\n")
+      },
+      {
+        titulo: "Importação no padrão brasileiro",
+        objetivo: "Aceitar a planilha do jeito que o sistema da loja exporta.",
+        tecnica: "Lista de armadilhas conhecidas e teste com arquivo real.",
+        saida: "Função de importação e relatório de testes.",
+        texto: [
+          "# Papel",
+          "Você é engenheiro de software e revisa uma rotina de importação de planilhas.",
+          "",
+          "# Contexto",
+          "Arquivos xlsx, xls e csv exportados de um ERP brasileiro antigo, com colunas que mudam de nome entre lojas.",
+          "",
+          "# Tarefa",
+          "1. Leia datas dd/mm/aaaa e valores como 1.250,40 sem trocar dia por mês nem vírgula por ponto.",
+          "2. Corrija acentos de sistemas antigos.",
+          "3. Detecte linhas repetidas, canceladas, devoluções e datas no futuro.",
+          "4. Permita mapear colunas uma vez e lembrar o mapeamento.",
+          "5. Permita desfazer uma importação inteira.",
+          "",
+          "# Formato da resposta",
+          "Código comentado e uma lista de testes que passaram e falharam."
+        ].join("\n")
+      },
+      {
+        titulo: "Nome e proposta",
+        objetivo: "Dar ao produto um nome do setor e uma proposta que o dono aprove.",
+        tecnica: "Critérios de marca e cálculo de retorno com números do cliente.",
+        saida: "Nome, assinatura e proposta em slides.",
+        texto: [
+          "# Papel",
+          "Você é estrategista de marca e de vendas consultivas.",
+          "",
+          "# Tarefa",
+          "1. Proponha 5 nomes que falem a língua de quem vive de carro, com o motivo de cada um.",
+          "2. Verifique se já existem marcas ou empresas com esses nomes.",
+          "3. Escreva a assinatura em uma frase.",
+          "4. Monte uma proposta de 14 slides: dor, solução, demonstração, preço e retorno.",
+          "",
+          "# Restrições",
+          "- O retorno deve usar os números reais da loja: {FATURAMENTO_POR_OFICINA} e {MARGEM}.",
+          "- Linguagem de balcão, sem jargão de tecnologia."
+        ].join("\n")
+      }
+    ],
+
+    stack: [
+      { nome: "Claude", uso: "Descoberta, escopo, proposta e marca" },
+      { nome: "Claude Code", uso: "Código, testes e correções" },
+      { nome: "Next.js", uso: "Site e telas do produto" },
+      { nome: "Vercel", uso: "Hospedagem do site e do servidor" },
+      { nome: "Supabase", uso: "Banco de dados e login" },
+      { nome: "SheetJS", uso: "Leitura de xlsx, xls e csv" },
+      { nome: "WhatsApp", uso: "Contato com a oficina em 1 toque" },
+      { nome: "ERP da loja", uso: "Fonte das vendas, via planilha" }
+    ],
+
+    etapas: [
+      { titulo: "Descoberta", descricao: "Conversei com o dono e com quem cuida das planilhas para entender a dor, os dados e a rotina da loja." },
+      { titulo: "MVP com IA", descricao: "Com o Claude e o Claude Code, construí as telas, a importação e o motor de alertas, com dados fictícios." },
+      { titulo: "Testes", descricao: "Testei com planilhas no formato do sistema da loja e corrigi o que quebraria na primeira semana." },
+      { titulo: "Produto e venda", descricao: "Nome, marca, plano de produção, proposta comercial e plano de expansão para outras autopeças." }
+    ],
+    resultados: [
+      { valor: "10 s", rotulo: "para o vendedor registrar um contato com a oficina" },
+      { valor: "1 h", rotulo: "por semana de operação por cliente, com a importação assistida" },
+      { valor: "72 mil", rotulo: "lojas de peças no Brasil: o mercado para depois do primeiro cliente" }
+    ],
+
+    blocosB: [
+      { tipo: "metrics", titulo: "Metas do piloto", lead: "O que o Contagiro precisa entregar nos primeiros 90 dias de uso.", itens: [
+        { valor: "100%", rotulo: "das oficinas recorrentes com vendedor e WhatsApp cadastrados" },
+        { valor: "80%", rotulo: "das oficinas frias com contato registrado em até 7 dias" },
+        { valor: "10+", rotulo: "oficinas que voltaram a comprar depois do contato" }
+      ]}
+    ],
+
+    orcamentoTitulo: "Modelo de negócio",
+    orcamento: {
+      frase: "Quanto custa não perder uma oficina? Menos do que ela compra em um mês.",
+      itens: [
+        { valor: "R$ 8.000", rotulo: "de implantação, em 2 × R$ 4.000: importação inicial, cadastro e treinamento da equipe" },
+        { valor: "R$ 1.250", rotulo: "por mês de manutenção e suporte, com usuários ilimitados" },
+        { valor: "R$ 1.500", rotulo: "por mês no total: R$ 1.250 de manutenção + R$ 250 de acesso à plataforma" }
+      ]
+    },
+    blocosC: [
+      { tipo: "cards", titulo: "Onde roda", lead: "Infraestrutura enxuta, que atende várias autopeças com o mesmo custo.", itens: [
+        { titulo: "Vercel", desc: "Site e servidor em Next.js, com publicação automática a cada atualização." },
+        { titulo: "Supabase", desc: "Banco Postgres e login por e-mail, com uma base separada para cada autopeça. Com a Vercel, cerca de US$ 45 por mês para vários clientes juntos." },
+        { titulo: "LGPD", desc: "Contrato de operador de dados, sem cruzar dados entre clientes e com exclusão ao fim do contrato." }
+      ]}
+    ],
+
+    aprendizados: "Software para varejo não compete com outro software, compete com o costume. O Contagiro só funciona porque cabe na rotina que a loja já tem: a mesma planilha de sexta e o mesmo WhatsApp do vendedor. A IA me deixou ir da ideia ao produto testado em dias, e o tempo que sobrou foi para o que importa: entender a loja, a oficina e o vendedor.",
+    links: []
+  },
+  {
+    id: "p04", titulo: "Agente de design", categoria: "Agente de IA",
+    tituloLinhas: ["Agente de design"],
+    subtitulo: "Um designer de IA treinado com os ativos de cada marca: do briefing ao carrossel de 10 páginas em 10 minutos.",
+    ferramentas: ["Claude", "Projetos e skills", "Photoshop", "Magnific"],
+    capa: "img/p04-carrossel.webp",
+    capaLegenda: "Exemplo ilustrativo de carrossel de 10 páginas no padrão da marca.",
+
+    contexto: "Na agência, a demanda de social media não para. Tem dia com 6 a 8 carrosséis para entregar, e cada carrossel de 10 páginas me tomava pelo menos 2 horas: abrir o arquivo, achar a fonte certa, alinhar, revisar cores, exportar feed e stories. Somando, eram 12 a 16 horas de trabalho repetitivo em um dia só, sobrando quase nada para pensar em estratégia.",
+    papel: "Criação, treinamento e curadoria do agente",
+    publico: "Clientes da ARZ.ag e da 2ME",
+    duracao: "Uso diário em social media",
+    solucao: "Criei um agente de design no Claude e treinei com tudo o que define uma marca: logotipo, cores, tipografia, tom de voz, regras de layout e peças já aprovadas. Com isso, ele vira craque naquela marca. Eu mando o briefing, ele devolve o roteiro página a página e as artes prontas no padrão, organizadas por job, em feed e stories. Eu reviso, ajusto o que precisa e entrego.",
+    antes: "2 horas por carrossel, montando página por página e conferindo cor, fonte e margem na mão.",
+    depois: "10 minutos por carrossel: briefing, geração no padrão da marca e revisão final.",
+
+    blocosA: [
+      { tipo: "gallery", titulo: "O que o agente recebe", nota: "Exemplo ilustrativo do kit de marca usado no treinamento.", itens: [
+        { src: "img/p04-kit.webp", w: 2400, h: 1350, formato: "full", legenda: "Kit de marca · logotipo, cores, tipografia, tom de voz, regras de layout e peças aprovadas." }
+      ]},
+      { tipo: "cards", titulo: "Como o agente é treinado", lead: "Cada marca tem o próprio agente. O treinamento é feito uma vez e melhora a cada peça aprovada.", itens: [
+        { titulo: "Ativos de marca", desc: "Logotipos, paleta com códigos, fontes, ícones e fotos liberadas." },
+        { titulo: "Regras de layout", desc: "Formato, margens, grid, onde vai o logo e quantas linhas cabem por página." },
+        { titulo: "Tom de voz", desc: "Como a marca fala, palavras que usa e palavras que nunca usa." },
+        { titulo: "Peças aprovadas", desc: "Carrosséis que o cliente já aprovou viram referência do que é certo." },
+        { titulo: "Checklist de revisão", desc: "Antes de entregar, o próprio agente confere cor, fonte, margem e texto." },
+        { titulo: "Entrega editável", desc: "Arquivos organizados por job, em feed e stories, prontos para ajuste fino." }
+      ]}
+    ],
+
+    arquiteturaTitulo: "Como funciona",
+    arquitetura: {
+      fluxo: [
+        { titulo: "Ativos da marca", desc: "Logo, cores, fontes, tom de voz, regras e peças aprovadas entram no projeto do agente.", digita: "Entra: o kit da marca", calcula: "Treino feito uma vez", envia: "marca aprendida" },
+        { titulo: "Agente treinado", desc: "Recebe o briefing, escreve o roteiro página a página e monta as artes no padrão da marca.", digita: "Entra: o briefing do dia", calcula: "Sai: roteiro + artes", envia: "10 páginas" },
+        { titulo: "Carrossel pronto", desc: "Feed e stories organizados por job, prontos para revisão.", calcula: "Sai: arquivos para postar" }
+      ],
+      extras: [
+        { titulo: "Revisão humana", desc: "Eu confiro mensagem, hierarquia e detalhes visuais. O que eu corrijo vira regra nova.", digita: "Entra: o meu olhar de diretor de arte", calcula: "Sai: peça aprovada", envia: "aprendizado" },
+        { titulo: "Biblioteca da marca", desc: "Cada peça aprovada volta para o agente como referência e deixa o próximo carrossel melhor.", calcula: "O agente melhora a cada entrega" }
+      ],
+      legenda: "Regra do agente: ele cria, eu dirijo. Nada vai para o cliente sem passar pela minha revisão."
+    },
+
+    ia: "O agente é um projeto do Claude com instruções fixas e os arquivos da marca como conhecimento. Os prompts abaixo mostram as quatro partes: a instrução permanente do agente, o briefing do dia, a revisão e o desdobramento para stories.",
+    prompts: [
+      {
+        titulo: "Instrução do agente",
+        objetivo: "Fazer o agente pensar como o designer da marca, em toda conversa.",
+        tecnica: "Instrução permanente com regras duras e referências anexadas.",
+        saida: "Um agente que só cria dentro do padrão.",
+        texto: [
+          "# Papel",
+          "Você é o designer sênior da marca {MARCA}. Você conhece o kit de marca anexado melhor do que ninguém.",
+          "",
+          "# Conhecimento",
+          "- Kit de marca: logotipo, cores, tipografia, tom de voz e regras de layout.",
+          "- Peças aprovadas: use como referência de hierarquia, ritmo e densidade de texto.",
+          "",
+          "# Regras",
+          "- Formato 1080 × 1350, margem de 80 px, logo no canto inferior esquerdo.",
+          "- Use somente as cores e fontes do kit. A cor de destaque aparece uma vez por página.",
+          "- Uma ideia por página. Título com até 7 palavras na capa.",
+          "- A última página sempre tem uma chamada para ação.",
+          "",
+          "# Quando faltar informação",
+          "Pergunte antes de criar. Nunca invente dado, preço ou promessa da marca."
+        ].join("\n")
+      },
+      {
+        titulo: "Briefing de carrossel",
+        objetivo: "Sair do briefing para 10 páginas prontas em uma rodada.",
+        tecnica: "Roteiro primeiro, arte depois, com estrutura de página fixa.",
+        saida: "Roteiro página a página e as 10 artes.",
+        texto: [
+          "Crie um carrossel de 10 páginas para {MARCA}.",
+          "",
+          "Tema: {TEMA}",
+          "Objetivo: {OBJETIVO}",
+          "Público: {PÚBLICO}",
+          "",
+          "1. Primeiro, escreva o roteiro: página, título e texto de apoio.",
+          "2. Página 1 é o gancho. Páginas 2 a 8 desenvolvem uma ideia cada. Página 9 resume. Página 10 chama para ação.",
+          "3. Depois, monte as artes seguindo o kit de marca.",
+          "4. Entregue feed (1080 × 1350) e a versão stories (1080 × 1920)."
+        ].join("\n")
+      },
+      {
+        titulo: "Revisão de marca",
+        objetivo: "Pegar erro de padrão antes de chegar ao cliente.",
+        tecnica: "Checklist objetivo, página por página.",
+        saida: "Lista de correções com a página de cada uma.",
+        texto: [
+          "Revise o carrossel abaixo contra o kit de marca de {MARCA}.",
+          "",
+          "Para cada página, confira:",
+          "- Cores e fontes estão no kit?",
+          "- A margem de 80 px foi respeitada?",
+          "- O texto tem no máximo 3 linhas de apoio?",
+          "- O tom de voz bate com o da marca?",
+          "- Há erro de português?",
+          "",
+          "Responda em tabela: Página | Problema | Correção. Se estiver tudo certo, diga só \"aprovado\"."
+        ].join("\n")
+      },
+      {
+        titulo: "Desdobramento",
+        objetivo: "Aproveitar o mesmo conteúdo em outros formatos.",
+        tecnica: "Adaptação com regras de cada formato.",
+        saida: "Stories e post único derivados do carrossel.",
+        texto: [
+          "A partir do carrossel aprovado de {MARCA}:",
+          "1. Crie uma sequência de 5 stories (1080 × 1920), com a chamada no último.",
+          "2. Crie um post único (1080 × 1350) que resuma a ideia principal.",
+          "3. Escreva a legenda do post com até 3 parágrafos curtos e 5 hashtags do nicho.",
+          "Mantenha cores, fontes e tom de voz do kit."
+        ].join("\n")
+      }
+    ],
+
+    stack: [
+      { nome: "Claude", uso: "O agente: instruções, roteiro e artes" },
+      { nome: "Projetos do Claude", uso: "Um projeto por marca, com o kit como conhecimento" },
+      { nome: "Skills", uso: "Rotinas de criação, revisão e desdobramento" },
+      { nome: "Photoshop", uso: "Ajuste fino e arquivo editável" },
+      { nome: "Magnific", uso: "Imagens e upscale (antigo Freepik)" },
+      { nome: "Google Drive", uso: "Ativos da marca e entregas por job" }
+    ],
+
+    etapas: [
+      { titulo: "Coleta", descricao: "Reuni logo, cores, fontes, tom de voz e as peças já aprovadas de cada cliente." },
+      { titulo: "Treinamento", descricao: "Transformei tudo em instruções e regras que o agente segue em toda conversa." },
+      { titulo: "Testes", descricao: "Gerei carrosséis de temas reais e ajustei as regras até sair no padrão de primeira." },
+      { titulo: "Rotina", descricao: "Hoje uso todo dia: briefing, geração, revisão e entrega. O que eu corrijo vira regra nova." }
+    ],
+    resultados: [
+      { valor: "−92%", rotulo: "de tempo por carrossel: de 2 horas para 10 minutos" },
+      { valor: "12×", rotulo: "mais rápido: 6 a 8 carrosséis saem em 1 hora a 1h20" },
+      { valor: "11 a 15 h", rotulo: "devolvidas em um dia de pico, que antes eram só execução" }
+    ],
+
+    blocosB: [
+      { tipo: "gallery", titulo: "Exemplo de entrega", nota: "Exemplo ilustrativo de um carrossel de 10 páginas no padrão da marca.", itens: [
+        { src: "img/p04-carrossel.webp", w: 2400, h: 1224, formato: "full", legenda: "Carrossel de 10 páginas · capa com gancho, 5 sinais, resumo, número e chamada para ação." }
+      ]}
+    ],
+
+    aprendizados: "Um agente bom não nasce do prompt, nasce do kit de marca. Quanto mais claras as regras e melhores as referências, menos eu corrijo. A IA tirou de mim a parte repetitiva do design, e o tempo que voltou eu uso no que ela não faz sozinha: a ideia, a estratégia e o olhar final.",
+    links: []
+  },
+  {
+    id: "p05", titulo: "Como eu uso IA", categoria: "Stack de IA",
+    tituloLinhas: ["Como eu uso IA"],
+    subtitulo: "Skills, agentes e conectores que transformam o Claude no meu time: menos horas, menos custo e mais entrega.",
+    ferramentas: ["Claude", "Skills", "Agentes", "Conectores"],
+    capa: "img/p05-capa.webp",
+    capaLegenda: "Algumas das skills que eu uso no Claude, por área.",
+
+    contexto: "Trabalho com marketing, criação e eventos, em várias contas ao mesmo tempo. Planejar, escrever, criar arte, montar proposta, analisar dado e entregar arquivo: cada parte disso costumava ser uma ferramenta, uma pessoa ou uma madrugada. Decidi usar IA em tudo que se repete e guardar o meu tempo para o que exige critério.",
+    papel: "Uso diário, criação de skills e agentes",
+    publico: "Clientes, agências e projetos próprios",
+    duracao: "Rotina diária",
+    solucao: "O Claude é a base. Nele eu uso skills (rotinas prontas para tarefas específicas), agentes treinados para cada tipo de trabalho e conectores que ligam a IA às minhas ferramentas: Drive, Gmail, mLabs, Adobe e Higgsfield. Cada projeto deste portfólio saiu dessa combinação.",
+    antes: "Uma ferramenta para cada tarefa, muito copiar e colar e horas de execução repetitiva.",
+    depois: "Um time de IA que planeja, cria, revisa e entrega comigo, e eu fico com a direção.",
+
+    blocosA: [
+      { tipo: "skills", titulo: "Skills que eu uso", lead: "Skills são rotinas prontas que ensinam o Claude a fazer uma tarefa do jeito certo. Estas são as que mais uso.", grupos: [
+        { grupo: "Marketing", itens: [["/campaign-plan", "Plano de campanha com calendário e métricas"], ["/content-creation", "Posts, e-mails e landing pages"], ["/brand-review", "Revisão de texto contra a voz da marca"], ["/competitive-brief", "Análise de concorrentes"], ["/performance-report", "Relatório de resultados com próximos passos"], ["/seo-audit", "Auditoria de SEO"]] },
+        { grupo: "Design", itens: [["/design-critique", "Crítica de layout, hierarquia e consistência"], ["/ux-copy", "Textos de botões, telas e mensagens"], ["/design-system", "Organização de cores, fontes e componentes"], ["/frontend-design", "Sites e telas com direção visual"]] },
+        { grupo: "Vendas e negócio", itens: [["/proposal-builder", "Propostas comerciais"], ["/lead-finder", "Busca e qualificação de leads"], ["/social-content-engine", "Pauta de redes sociais"], ["/brainstorm", "Ideias de produto e estratégia"]] },
+        { grupo: "Dados", itens: [["/build-dashboard", "Dashboards com gráficos e filtros"], ["/analyze", "Perguntas sobre dados e tendências"], ["/create-viz", "Gráficos para relatórios"]] },
+        { grupo: "Documentos", itens: [["/pptx", "Apresentações"], ["/docx", "Contratos e documentos"], ["/xlsx", "Planilhas com fórmulas"], ["/pdf", "PDFs prontos para enviar"]] },
+        { grupo: "Criação e IA", itens: [["/adobe-for-creativity", "Edição de imagem e vídeo com Adobe"], ["/higgsfield", "Imagens e vídeos generativos"], ["/skill-creator", "Criar as minhas próprias skills"]] }
+      ]},
+      { tipo: "cards", titulo: "Meus agentes", lead: "Agentes são o Claude treinado para um trabalho específico, com contexto, regras e ferramentas próprias.", itens: [
+        { titulo: "Agente financeiro", desc: "Recebe meus gastos por áudio e lança na planilha e no app do Breno.", link: "p01", tag: "Projeto 01" },
+        { titulo: "Diretor de vídeo", desc: "Transforma uma ideia em roteiro, decupagem e prompts de imagem e vídeo.", link: "p02", tag: "Projeto 02" },
+        { titulo: "Sócio técnico", desc: "Escreve, testa e corrige o código dos produtos que eu vendo.", link: "p03", tag: "Projeto 03" },
+        { titulo: "Agente de design", desc: "Cria carrosséis no padrão de cada marca em 10 minutos.", link: "p04", tag: "Projeto 04" },
+        { titulo: "Prospecção", desc: "Monta listas de leads qualificados por região para a agência." },
+        { titulo: "Propostas", desc: "Gera propostas comerciais completas a partir de um briefing." }
+      ]},
+      { tipo: "chips", titulo: "Conectores", lead: "Conectores ligam o Claude às ferramentas onde o trabalho já acontece.", itens: ["Google Drive", "Gmail", "mLabs", "Adobe", "Higgsfield", "Claude Docs", "GitHub", "Vercel"] }
+    ],
+
+    ia: "Todo pedido que faço segue a mesma lógica: dizer quem a IA é naquela tarefa, dar o contexto, pedir uma coisa de cada vez, colocar limites e definir o formato da entrega. Abaixo, o modelo que eu uso para criar uma skill nova quando uma tarefa começa a se repetir.",
+    prompts: [
+      {
+        titulo: "Criar uma skill",
+        objetivo: "Transformar uma tarefa repetida em uma rotina que o Claude executa sempre igual.",
+        tecnica: "Descrever gatilho, passos, regras e exemplo de saída.",
+        saida: "Uma skill pronta para usar com um comando.",
+        texto: [
+          "# Papel",
+          "Você é especialista em criar skills para o Claude.",
+          "",
+          "# Contexto",
+          "Faço esta tarefa toda semana: {TAREFA}. Hoje levo {TEMPO} para fazer.",
+          "",
+          "# Tarefa",
+          "1. Escreva quando a skill deve ser usada, em uma frase.",
+          "2. Liste os passos, na ordem, com o que entra e o que sai de cada um.",
+          "3. Liste as regras que não podem ser quebradas.",
+          "4. Inclua um exemplo de entrega pronta.",
+          "",
+          "# Formato da resposta",
+          "Um arquivo SKILL.md completo."
+        ].join("\n")
+      }
+    ],
+
+    stack: [
+      { nome: "Claude", uso: "A base de tudo: texto, código, análise e agentes" },
+      { nome: "Claude Code", uso: "Produtos, sites e automações" },
+      { nome: "Higgsfield", uso: "Vídeo e imagem generativos" },
+      { nome: "Magnific", uso: "Imagens e upscale (antigo Freepik)" },
+      { nome: "Nano Banana 2", uso: "Personagens e cenas" },
+      { nome: "Seedream e Seedance", uso: "Produto e animação" },
+      { nome: "Adobe", uso: "Photoshop, Illustrator e Premiere" },
+      { nome: "mLabs", uso: "Dados de redes sociais para dashboards" }
+    ],
+
+    etapas: [
+      { titulo: "Percebo a repetição", descricao: "Se faço a mesma coisa mais de duas vezes, anoto." },
+      { titulo: "Testo com IA", descricao: "Faço a tarefa junto com o Claude e vejo onde ele acerta e onde erra." },
+      { titulo: "Viro rotina", descricao: "O que funcionou vira skill, agente ou projeto com regras fixas." },
+      { titulo: "Meço", descricao: "Comparo tempo e custo antes e depois. Se não economiza, não fica." }
+    ],
+    resultados: [
+      { valor: "−92%", rotulo: "de tempo para lançar as finanças do dia (Projeto 01)" },
+      { valor: "−92%", rotulo: "de tempo por carrossel de 10 páginas (Projeto 04)" },
+      { valor: "0", rotulo: "câmeras, estúdios ou atores para um comercial de 45 s (Projeto 02)" }
+    ],
+
+    orcamentoTitulo: "Quanto custa",
+    orcamento: {
+      frase: "IA boa não é a mais cara, é a que se paga na primeira semana.",
+      itens: [
+        { valor: "R$ 100", rotulo: "por mês de assinatura do Claude, a base de todos os projetos" },
+        { valor: "Créditos", rotulo: "de imagem e vídeo (Higgsfield, Magnific) só quando há projeto" },
+        { valor: "≈ US$ 45", rotulo: "por mês de infraestrutura para o Contagiro atender várias autopeças" }
+      ]
+    },
+
+    aprendizados: "Usar IA em tudo não é apertar um botão e esperar mágica. É saber o que pedir, conferir o que volta e transformar o que funciona em rotina. A IA faz a parte repetitiva melhor e mais rápido do que eu; eu continuo responsável pela ideia, pelo critério e pelo resultado.",
+    links: []
+  }
+];
+
+var METODO = {
+  intro: "Uso IA como parte do processo, do briefing à entrega. Ela pesquisa, organiza e gera rascunhos; eu defino a direção, reviso e assino o resultado.",
+  etapas: [
+    { titulo: "Entender", descricao: "Antes de abrir qualquer ferramenta, defino o problema, o público e o que é sucesso." },
+    { titulo: "Estruturar", descricao: "Transformo o briefing em prompt: papel, contexto, tarefa, restrições e formato." },
+    { titulo: "Gerar", descricao: "Produzo variações rápidas com IA (textos, imagens, vídeos, planilhas) e escolho as melhores." },
+    { titulo: "Refinar", descricao: "Reviso, ajusto com olhar de diretor de arte e só entrego o que eu assinaria." }
+  ],
+  ferramentas: [
+    { nome: "Claude", uso: "Automação, planilhas, textos e prompts" },
+    { nome: "Magnific", uso: "Imagens e upscale (antigo Freepik)" },
+    { nome: "Higgsfield", uso: "Vídeos e cenas com IA" },
+    { nome: "Google Sheets", uso: "Controle, dados e automação" },
+    { nome: "Adobe Creative Cloud", uso: "Photoshop, Illustrator e Premiere" },
+    { nome: "RD Station", uso: "CRM e automação de marketing" },
+    { nome: "Google Drive", uso: "Organização de arquivos e entregas" },
+    { nome: "Behance", uso: "Vitrine dos projetos visuais" }
+  ],
+  principios: [
+    { texto: "A IA acelera, mas a decisão final é sempre humana." },
+    { texto: "Prompt bom é briefing bom: contexto claro gera resultado claro." },
+    { texto: "Se uma tarefa se repete, ela pode ser automatizada." }
+  ]
+};
+
+var CONTATO = {
+  convite: "O mundo mudou, e eu mudei junto. Uso IA no dia a dia para trabalhar melhor, criar mais rápido e viver com mais clareza. Vamos conversar?",
+  email: "andrerfernandes10@gmail.com",
+  linkedin: "https://www.linkedin.com/in/andre-rodrigues-a076a6211",
+  behance: "",
+  whatsapp: "(11) 98188-7781",
+  curriculo: ""
+};
+
+/* ===================================================================== */
+
+function $(s, r){ return (r || document).querySelector(s); }
+function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+function ph(h){ return '<span class="ph">' + esc(h) + '</span>'; }
+function has(v){ return v != null && String(v).trim() !== ''; }
+function t(v, h){ return has(v) ? esc(v) : ph(h); }
+function pad(n){ return String(n).padStart(2, '0'); }
+function fill(arr, n, make){ var out = (arr || []).slice(0, n); while (out.length < n) out.push(make()); return out; }
+function stripUrl(u){ return String(u).replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, ''); }
+
+PROJETOS.forEach(function(p, i){ p.num = pad(i + 1); });
+
+var ROMAN = ['I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII'];
+var VIEWS = [{ id: 'inicio', nome: 'Home', rotulo: 'Home' }, { id: 'sobre', nome: 'Sobre', rotulo: 'Sobre' }]
+  .concat(PROJETOS.map(function(p){ return { id: p.id, nome: p.num, rotulo: 'Projeto ' + p.num + ' · ' + p.titulo, aria: 'Projeto ' + p.num }; }))
+  .concat([{ id: 'metodo', nome: 'Método', rotulo: 'Método & stack' }, { id: 'contato', nome: 'Contato', rotulo: 'Contato' }]);
+function chapterOf(id){ for (var i = 0; i < VIEWS.length; i++) if (VIEWS[i].id === id) return ROMAN[i]; return ''; }
+
+var MARK_BIG = '<svg class="wm" viewBox="0 0 120 120" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path stroke-width="12" d="M30 100 L60 22 L90 100"/><path stroke-width="12" d="M14 76 L106 60"/><path stroke-width="12" d="M98 16 V40 M86 28 H110"/><circle cx="24" cy="34" r="8" stroke-width="2" opacity=".45"/></g><text x="24" y="36.6" font-size="7" text-anchor="middle" fill="currentColor" opacity=".45" font-family="Geist, Helvetica, Arial, sans-serif">IA</text></svg>';
+
+function media(src, label, spec, cls, alt){
+  if (has(src)) return '<figure class="slot has-media ' + cls + '"><img src="' + esc(src) + '" alt="' + esc(alt || label) + '" loading="lazy"></figure>';
+  return '<div class="slot ' + cls + '" role="img" aria-label="Espaço reservado: ' + esc(label) + '"><div class="slot-label"><span class="slot-plus" aria-hidden="true">+</span><span>' + esc(label) + '</span><span class="slot-spec">' + esc(spec) + '</span></div></div>';
+}
+function secHead(n, label){ return '<div class="sec-head"><span class="chip chip-o">' + n + '</span><span class="chip chip-f">' + esc(label) + '</span></div>'; }
+function metaRow(cells){ return '<div class="meta-row">' + cells.map(function(c){ return '<div><span class="k">' + esc(c[0]) + '</span><span class="v">' + c[1] + '</span></div>'; }).join('') + '</div>'; }
+function titleBlock(pre, title){ return '<div class="offset"><div class="pre">' + pre.map(function(x){ return '<span>' + esc(x) + '</span>'; }).join('') + '</div><h1 class="mega">' + esc(title) + '</h1></div>'; }
+function titleCenter(lines){ return '<h1 class="mega mega-c">' + lines.map(function(l){ return '<span>' + esc(l) + '</span>'; }).join('') + '</h1>'; }
+function nextLink(href, bigHTML){ return '<a class="next" href="#' + href + '"><span class="next-big">' + bigHTML + ' <span class="next-arrow" aria-hidden="true">→</span></span></a>'; }
+function sec(n, label, inner){ return '<div class="sec">' + secHead(n, label) + '<div class="sec-body">' + inner + '</div></div>'; }
+
+/* ---------- projeto ---------- */
+function projetoHTML(p, i){
+  var total = pad(PROJETOS.length);
+  var tools = p.ferramentas || [];
+  var widgetItems = tools.length
+    ? tools.slice(0, 4).map(function(x){ return '<li>' + esc(x) + '</li>'; }).join('')
+    : ['ferramenta 01', 'ferramenta 02', 'ferramenta 03'].map(function(x){ return '<li>' + ph(x) + '</li>'; }).join('');
+  var etapas = fill(p.etapas, 4, function(){ return {}; });
+  var resHints = ['métrica, ex.: horas economizadas por mês', 'métrica, ex.: tarefas automatizadas', 'métrica, ex.: erros ou custo reduzidos'];
+  var res = fill(p.resultados, 3, function(){ return {}; });
+  var gal = p.galeria || [];
+  var links = p.links || [];
+  var next = PROJETOS[i + 1];
+  var nextHTML = next
+    ? nextLink(next.id, 'Próximo<br>projeto')
+    : nextLink('metodo', 'Próximo<br>capítulo');
+
+  var n = 0;
+  function S(label, inner){ n++; return sec(pad(n), label, inner); }
+  var filled = has(p.contexto);
+
+  var linksHTML = links.length
+    ? '<div class="links">' + links.map(function(l){ return '<a class="chip chip-f chip-lg" href="' + esc(l.url) + '" target="_blank" rel="noopener">' + esc(l.rotulo) + ' ↗</a>'; }).join('') + '</div>'
+    : (filled ? '' : '<div class="links"><span class="chip chip-ghost chip-lg">Link da demo</span><span class="chip chip-ghost chip-lg">Arquivo do projeto</span></div>');
+
+  var html = ''
+  + (p.tituloLinhas ? titleCenter(p.tituloLinhas) : titleBlock([p.categoria || 'Projeto'], p.titulo))
+  + (p.subtitulo ? '<p class="sub-c">' + esc(p.subtitulo) + '</p>' : '')
+  + '<div class="cover' + (has(p.capa) ? ' has-cover' : '') + '">'
+  +   media(p.capa, 'Capa do projeto', 'imagem ou vídeo · 21:9 · 2560×1100', 'slot-cover', p.titulo + ': ' + (p.capaLegenda || 'capa'))
+  +   '<div class="widget"><span class="w-k">Stack</span><ul>' + widgetItems + '</ul></div>'
+  +   (has(p.capaLegenda) ? '<p class="cover-cap">' + esc(p.capaLegenda) + '</p>' : '')
+  + '</div>';
+
+  html += S('Contexto',
+        '<p class="lead">' + t(p.contexto, 'Qual problema este projeto resolve, para quem e por que valia a pena usar IA.') + '</p>'
+      + '<dl class="facts facts-3">'
+      +   '<div><dt>Meu papel</dt><dd>' + t(p.papel, 'ex.: automação e prompts') + '</dd></div>'
+      +   '<div><dt>Para quem</dt><dd>' + t(p.publico, 'uso pessoal, cliente ou empresa') + '</dd></div>'
+      +   '<div><dt>Duração</dt><dd>' + t(p.duracao, 'ex.: 3 semanas') + '</dd></div>'
+      + '</dl>');
+
+  html += S('Solução',
+        '<p class="lead">' + t(p.solucao, 'Resuma em duas ou três frases o que foi construído.') + '</p>'
+      + '<div class="compare">'
+      +   '<div class="cmp cmp-a"><span class="tag">Antes · Sem IA</span><p>' + t(p.antes, 'Como essa tarefa era feita à mão.') + '</p></div>'
+      +   '<div class="cmp cmp-b"><span class="tag">Depois · Com IA</span><p>' + t(p.depois, 'O que mudou com a IA: tempo, esforço ou qualidade.') + '</p></div>'
+      + '</div>');
+
+  if (p.video) html += S('O filme',
+        '<figure class="film"><video controls playsinline preload="metadata" poster="' + esc(p.video.poster) + '"><source src="' + esc(p.video.src) + '" type="video/mp4"></video>'
+      + '<figcaption>' + esc(p.video.legenda) + '</figcaption></figure>');
+  if (p.marca) html += S('A marca',
+        '<p class="lead">' + esc(p.marca.texto) + '</p>'
+      + '<div class="brand-grid"><figure class="brand-logo photo-zoom"><img src="' + esc(p.marca.logo) + '" alt="Logotipo da Paz Energy" loading="lazy"></figure>'
+      + '<dl class="facts facts-2">' + p.marca.fatos.map(function(f){ return '<div><dt>' + esc(f[0]) + '</dt><dd>' + esc(f[1]) + '</dd></div>'; }).join('') + '</dl></div>');
+  if (p.personagem) html += S('O personagem',
+        '<p class="lead">' + esc(p.personagem.texto) + '</p>'
+      + '<button class="print-frame js-zoom" type="button" aria-label="Ampliar folha do personagem"><img src="' + esc(p.personagem.imagem) + '" width="' + p.personagem.w + '" height="' + p.personagem.h + '" alt="Folha do personagem: cinco ângulos de corpo e cinco expressões" loading="lazy"></button>'
+      + '<div class="chips">' + p.personagem.tracos.map(function(x){ return '<span class="skill">' + esc(x) + '</span>'; }).join('') + '</div>');
+  (p.blocosA || []).forEach(function(b){ html += S(b.titulo, blocoHTML(b)); });
+  if (p.arquitetura) html += S(p.arquiteturaTitulo || 'Arquitetura', archHTML(p.arquitetura));
+  (p.blocosA2 || []).forEach(function(b){ html += S(b.titulo, blocoHTML(b)); });
+
+  html += S('Como a IA entra',
+        '<p class="txt">' + t(p.ia, 'Mostre onde a IA entra no fluxo: qual ferramenta ou modelo, o que ela recebe e o que devolve.') + '</p>'
+      + promptsHTML(p));
+
+  if (p.engenharia) html += S('Engenharia', engHTML(p.engenharia));
+  if (p.demo === 'fluxo') html += S('Teste a lógica', simHTML());
+  if (p.storyboard) html += S('Decupagem',
+        '<p class="txt">O filme plano a plano. Cada frame foi gerado como foto e depois animado.</p>'
+      + '<ol class="board">' + p.storyboard.map(function(b){
+          return '<li><button class="board-img js-zoom" type="button" aria-label="Ampliar plano ' + esc(b.t) + '"><img src="' + esc(b.src) + '" width="1600" height="900" alt="' + esc(b.titulo + ': ' + b.desc) + '" loading="lazy"></button>'
+            + '<span class="board-t">' + esc(b.t) + '</span><strong>' + esc(b.titulo) + '</strong><span class="board-d">' + esc(b.desc) + '</span></li>';
+        }).join('') + '</ol>');
+  if (p.stack) html += S('Ferramentas',
+        '<div class="tools">' + p.stack.map(function(f){
+          return '<div class="tool"><span class="tool-ic" aria-hidden="true">' + esc(f.nome.charAt(0)) + '</span><div><h3>' + esc(f.nome) + '</h3><p>' + esc(f.uso) + '</p></div></div>';
+        }).join('') + '</div>');
+
+  html += S('Processo',
+        '<div class="steps">' + etapas.map(function(e, k){
+          return '<div class="step"><span class="step-n">Etapa ' + pad(k + 1) + '</span><h3>' + t(e.titulo, 'nome da etapa') + '</h3><p>' + t(e.descricao, 'O que foi feito nesta etapa.') + '</p></div>';
+        }).join('') + '</div>');
+
+  html += S('Resultados',
+        '<div class="metrics">' + res.map(function(r, k){
+          return '<div class="metric"><span class="m-v">' + (has(r.valor) ? esc(r.valor) : '—') + '</span><span class="m-l">' + t(r.rotulo, resHints[k] || 'métrica') + '</span></div>';
+        }).join('') + '</div>');
+
+  (p.blocosB || []).forEach(function(b){ html += S(b.titulo, blocoHTML(b)); });
+  if (p.orcamento) html += S(p.orcamentoTitulo || 'Orçamento',
+        '<p class="lead">' + esc(p.orcamento.frase) + '</p>'
+      + '<div class="metrics">' + p.orcamento.itens.map(function(r, k){
+          return '<div class="metric"' + (k === 2 ? ' style="background:var(--ink);color:var(--paper)"' : '') + '><span class="m-v">' + esc(r.valor) + '</span><span class="m-l"' + (k === 2 ? ' style="color:var(--on-ink-soft)"' : '') + '>' + esc(r.rotulo) + '</span></div>';
+        }).join('') + '</div>');
+
+  (p.blocosC || []).forEach(function(b){ html += S(b.titulo, blocoHTML(b)); });
+  if (gal.length || !filled) html += S(p.galeriaTitulo || 'Galeria', galleryHTML(p, gal));
+
+  html += S('Aprendizados',
+        '<p class="lead">' + t(p.aprendizados, 'O que você aprendeu e o que faria diferente na próxima versão.') + '</p>'
+      + linksHTML);
+
+  return html + nextHTML;
+}
+
+/* ---------- peças do estudo de caso ---------- */
+function blocoHTML(b){
+  var lead = b.lead ? '<p class="txt">' + esc(b.lead) + '</p>' : '';
+  if (b.tipo === 'gallery') return galleryHTML({ galeriaNota: b.nota }, b.itens);
+  if (b.tipo === 'metrics') return lead + '<div class="metrics">' + b.itens.map(function(r){
+      return '<div class="metric"><span class="m-v">' + esc(r.valor) + '</span><span class="m-l">' + esc(r.rotulo) + '</span></div>'; }).join('') + '</div>';
+  if (b.tipo === 'cards') return lead + '<div class="cardgrid">' + b.itens.map(function(c, k){
+      var inner = '<span class="cg-n">' + (c.tag ? esc(c.tag) : pad(k + 1)) + '</span><h3>' + esc(c.titulo) + '</h3><p>' + esc(c.desc) + '</p>';
+      return c.link ? '<a class="cg cg-link" href="#' + esc(c.link) + '">' + inner + '<span class="cg-go" aria-hidden="true">→</span></a>' : '<div class="cg">' + inner + '</div>'; }).join('') + '</div>';
+  if (b.tipo === 'decisoes') return lead + '<div class="dec"><div class="dec-h" aria-hidden="true"><span>Plano original</span><span>O problema</span><span>Como ficou</span></div>' + b.itens.map(function(d){
+      return '<div class="dec-r"><span class="dec-a"><em>Plano</em>' + esc(d[0]) + '</span><span class="dec-b"><em>Problema</em>' + esc(d[1]) + '</span><span class="dec-c"><em>Como ficou</em>' + esc(d[2]) + '</span></div>'; }).join('') + '</div>';
+  if (b.tipo === 'skills') return lead + '<div class="skgrid">' + b.grupos.map(function(g){
+      return '<div class="skg"><h3>' + esc(g.grupo) + '</h3><ul>' + g.itens.map(function(i){ return '<li><code>' + esc(i[0]) + '</code><span>' + esc(i[1]) + '</span></li>'; }).join('') + '</ul></div>'; }).join('') + '</div>';
+  if (b.tipo === 'chips') return lead + '<div class="chips">' + b.itens.map(function(x){ return '<span class="skill">' + esc(x) + '</span>'; }).join('') + '</div>';
+  return '';
+}
+function hlFormula(s){
+  var re = /('[^']+'!)?\$?[A-Z]{1,3}\$?\d+(?::\$?[A-Z]{1,3}\$?\d+)?/g, out = '', last = 0, m;
+  while ((m = re.exec(s))){
+    if (s.charAt(m.index - 1) === '#') continue;
+    out += esc(s.slice(last, m.index)) + '<b class="ref">' + esc(m[0]) + '</b>';
+    last = re.lastIndex;
+  }
+  return out + esc(s.slice(last));
+}
+function hlPrompt(s){
+  return s.split('\n').map(function(line){
+    var e = esc(line).replace(/\{[^}]+\}/g, function(x){ return '<span class="var">' + x + '</span>'; });
+    return /^# /.test(line) ? '<span class="h">' + e + '</span>' : e;
+  }).join('\n');
+}
+function nodeHTML(nd, cls){
+  return '<div class="node' + (cls ? ' ' + cls : '') + '"><h3>' + esc(nd.titulo) + '</h3><p>' + esc(nd.desc) + '</p>'
+    + '<div class="io">' + (nd.digita ? '<span class="in">' + esc(nd.digita) + '</span>' : '') + (nd.calcula ? '<span class="calc">' + esc(nd.calcula) + '</span>' : '') + '</div></div>';
+}
+function arrowHTML(label){ return '<div class="arrow" aria-hidden="true"><b>→</b><span>' + esc(label || '') + '</span></div>'; }
+function archHTML(a){
+  var f = a.fluxo;
+  return '<div class="arch"><div class="arch-flow">'
+    + nodeHTML(f[0]) + arrowHTML(f[0].envia) + nodeHTML(f[1], 'node-hub') + arrowHTML(f[1].envia) + nodeHTML(f[2])
+    + '</div><div class="arch-side">' + nodeHTML(a.extras[0], 'node-soft') + arrowHTML(a.extras[0].envia) + nodeHTML(a.extras[1], 'node-soft') + '</div>'
+    + (a.legenda ? '<p class="arch-note">' + esc(a.legenda) + '</p>' : '') + '</div>';
+}
+function promptsHTML(p){
+  if (!(p.prompts && p.prompts.length)){
+    return '<div class="prompt">'
+      + '<div class="prompt-top"><span>Prompt principal</span><button class="btn-pill js-copy" type="button"' + (has(p.prompt) ? '' : ' disabled') + '>Copiar</button></div>'
+      + '<pre>' + (has(p.prompt) ? esc(p.prompt) : ph('Cole aqui o prompt principal usado no projeto. As quebras de linha são mantidas.')) + '</pre>'
+      + '</div>';
+  }
+  var id = p.id;
+  var tabs = p.prompts.map(function(pr, k){
+    return '<button class="ptab" type="button" role="tab" id="pt-' + id + '-' + k + '" aria-controls="pp-' + id + '-' + k + '" aria-selected="' + (k === 0) + '" tabindex="' + (k === 0 ? 0 : -1) + '"><span>' + pad(k + 1) + '</span>' + esc(pr.titulo) + '</button>';
+  }).join('');
+  var panels = p.prompts.map(function(pr, k){
+    return '<div class="prompt" role="tabpanel" id="pp-' + id + '-' + k + '" aria-labelledby="pt-' + id + '-' + k + '"' + (k ? ' hidden' : '') + '>'
+      + '<div class="prompt-top"><span>Prompt ' + pad(k + 1) + ' · ' + esc(pr.titulo) + '</span><button class="btn-pill js-copy" type="button">Copiar</button></div>'
+      + '<dl class="pmeta"><div><dt>Objetivo</dt><dd>' + esc(pr.objetivo) + '</dd></div><div><dt>Técnica</dt><dd>' + esc(pr.tecnica) + '</dd></div><div><dt>Saída esperada</dt><dd>' + esc(pr.saida) + '</dd></div></dl>'
+      + '<pre>' + hlPrompt(pr.texto) + '</pre></div>';
+  }).join('');
+  return '<div class="pviewer">'
+    + '<div class="anat"><span class="anat-k">' + (p.estrutura ? 'O que todo prompt de imagem e vídeo descreve' : 'Estrutura de todos os prompts') + '</span>' + (p.estrutura || ['Papel', 'Contexto', 'Tarefa', 'Restrições', 'Formato da resposta']).map(function(x){ return '<span>' + esc(x) + '</span>'; }).join('') + '</div>'
+    + '<div class="ptabs" role="tablist" aria-label="Prompts do projeto">' + tabs + '</div>' + panels + '</div>';
+}
+function engHTML(list){
+  return '<ol class="eng">' + list.map(function(e){
+    return '<li><div class="eng-ref"><code>' + esc(e.ref) + '</code><strong>' + esc(e.nome) + '</strong></div>'
+      + '<div class="eng-body"><div class="fxbar"><i aria-hidden="true">fx</i><code>' + hlFormula(e.formula) + '</code><button class="js-copy" type="button" data-copy="' + esc(e.formula) + '">Copiar</button></div>'
+      + '<p>' + esc(e.nota) + '</p></div></li>';
+  }).join('') + '</ol>';
+}
+var SIM_EXEMPLO = [
+  { d: '01/11', e: '', s: '', g: '29,43' }, { d: '02/11', e: '', s: '', g: '32,89' }, { d: '03/11', e: '', s: '', g: '17,51' },
+  { d: '04/11', e: '', s: '', g: '29,89' }, { d: '05/11', e: '3.800,00', s: '', g: '41,20' }, { d: '06/11', e: '', s: '1.257,40', g: '22,10' },
+  { d: '07/11', e: '', s: '', g: '35,60' }
+];
+var SIM_INICIAL = '2.597,20';
+function simHTML(){
+  var rows = SIM_EXEMPLO.map(function(r, k){
+    return '<tr><td>' + r.d + '</td>'
+      + '<td><input id="sim-in-' + k + '" inputmode="decimal" autocomplete="off" aria-label="Entrada em ' + r.d + '"></td>'
+      + '<td><input id="sim-out-' + k + '" inputmode="decimal" autocomplete="off" aria-label="Saída em ' + r.d + '"></td>'
+      + '<td><input id="sim-g-' + k + '" inputmode="decimal" autocomplete="off" aria-label="Gasto diário em ' + r.d + '"></td>'
+      + '<td class="sim-s" id="sim-s-' + k + '"></td></tr>';
+  }).join('');
+  return '<p class="txt">Edite os números abaixo como se fosse o seu mês. O saldo segue a mesma regra da fórmula E3 da seção anterior. Os valores são de exemplo.</p>'
+    + '<div class="sim">'
+    +   '<div class="sim-sheet">'
+    +     '<div class="sim-top"><div class="sim-start"><label for="sim-start">Saldo inicial <span class="edit-hint" style="display:inline">✎ edite</span></label><input id="sim-start" inputmode="decimal" autocomplete="off"></div>'
+    +     '<div class="sim-actions"><button class="btn-line" type="button" id="sim-reset">Restaurar exemplo</button><button class="btn-line" type="button" id="sim-clear">Limpar lançamentos</button></div></div>'
+    +     '<div class="sim-scroll"><table><thead><tr><th scope="col">Data</th><th scope="col">Entrada</th><th scope="col">Saída</th><th scope="col">Diário</th><th scope="col">Saldo</th></tr>'
+    +     '<tr class="hint-row" aria-hidden="true"><td></td><td><span class="edit-hint">✎ clique e edite</span></td><td><span class="edit-hint">✎ clique e edite</span></td><td><span class="edit-hint">✎ clique e edite</span></td><td></td></tr></thead>'
+    +     '<tbody>' + rows + '</tbody>'
+    +     '<tfoot><tr><td>Total</td><td id="sim-tin"></td><td id="sim-tout"></td><td id="sim-tdia"></td><td id="sim-tend"></td></tr></tfoot></table></div>'
+    +   '</div>'
+    +   '<div class="sim-side" aria-live="polite"><span class="sim-k">Saldo em <span id="sim-lastd">01/11</span></span><span class="sim-v" id="sim-big">—</span>'
+    +     '<div class="sim-bars" id="sim-bars" aria-hidden="true"></div><span class="sim-state" id="sim-state"></span></div>'
+    + '</div>';
+}
+function galleryHTML(p, gal){
+  if (gal.length && gal[0].w){
+    return (has(p.galeriaNota) ? '<p class="note">' + esc(p.galeriaNota) + '</p>' : '')
+      + '<div class="prints">' + gal.map(function(g, k){
+        return '<figure class="print' + (g.formato ? ' ' + g.formato : '') + '">'
+          + '<button class="print-frame js-zoom" type="button" aria-label="Ampliar figura ' + pad(k + 1) + '"><img src="' + esc(g.src) + '" width="' + g.w + '" height="' + g.h + '" alt="' + esc(g.legenda) + '" loading="lazy"></button>'
+          + '<figcaption><b>Fig. ' + pad(k + 1) + '</b><span>' + esc(g.legenda) + '</span></figcaption></figure>';
+      }).join('') + '</div>';
+  }
+  return '<div class="gallery">'
+    + media(gal[0] && gal[0].src, 'Print ou vídeo principal', '21:9 · 2560×1100', 'g-wide', gal[0] && gal[0].legenda)
+    + [1, 2, 3, 4].map(function(k){ return media(gal[k] && gal[k].src, 'Tela ' + pad(k), '1:1 · 1080×1080', 'g-sm', gal[k] && gal[k].legenda); }).join('')
+    + '</div>';
+}
+
+/* ---------- sobre ---------- */
+function sobreHTML(){
+  var P = PERFIL;
+  var xps = fill(P.experiencias, 3, function(){ return {}; });
+  var skills = P.habilidades || [];
+  var foto = has(P.foto)
+    ? '<figure class="slot has-media slot-portrait photo-zoom"><img src="' + esc(P.foto) + '" alt="Retrato de ' + esc(P.nome) + '"></figure>'
+    : '<div class="slot slot-portrait" role="img" aria-label="Espaço reservado: foto de perfil">' + MARK_BIG + '</div>';
+  var cursos = (P.cursos || []).map(function(c){ return '<li>' + esc(c) + '</li>'; }).join('');
+
+  return ''
+  + '<div class="meta-row meta-one"><div><span class="k">Base</span><span class="v">' + esc(P.base) + '</span></div></div>'
+  + titleBlock(['Quem é'], P.nome)
+  + '<div class="profile">' + foto
+  +   '<div class="profile-body">'
+  +     '<p class="lead">' + t(P.bio, 'Apresentação curta.') + '</p>'
+  +     '<dl class="facts facts-2">'
+  +       '<div><dt>Cargo atual</dt><dd>' + esc(P.cargo) + '</dd></div>'
+  +       '<div><dt>Foco</dt><dd>' + esc(P.foco) + '</dd></div>'
+  +       '<div><dt>Idiomas</dt><dd>' + esc(P.idiomas) + '</dd></div>'
+  +       '<div><dt>Formação</dt><dd>' + esc(P.formacao) + '</dd></div>'
+  +     '</dl>'
+  +     '<div><span class="facts-k">Cursos e certificações</span><ul class="courses">' + cursos + '</ul></div>'
+  +   '</div>'
+  + '</div>'
+  + sec('01', 'Experiência',
+        '<ol class="xp">' + xps.map(function(x){
+          return '<li><span class="x-p">' + esc(x.periodo) + '</span><span class="x-t">' + esc(x.cargo) + '<br><span class="x-e">' + esc(x.empresa) + '</span></span><span class="x-d">' + esc(x.descricao) + '</span></li>';
+        }).join('') + '</ol>')
+  + sec('02', 'Habilidades',
+        '<div class="chips">' + skills.map(function(s){ return '<span class="skill">' + esc(s) + '</span>'; }).join('') + '</div>')
+  + nextLink(PROJETOS[0].id, 'Ver os<br>projetos');
+}
+
+/* ---------- método ---------- */
+function metodoHTML(){
+  var M = METODO;
+  var et = fill(M.etapas, 4, function(){ return {}; });
+  var fe = fill(M.ferramentas, 8, function(){ return {}; });
+  var pr = fill(M.principios, 3, function(){ return {}; });
+  var nFerr = (M.ferramentas || []).length;
+
+  return ''
+  + titleBlock([], 'Método & stack')
+  + sec('01', 'Como trabalho',
+        '<p class="lead">' + t(M.intro, 'Explique como você trabalha com IA, do briefing à entrega.') + '</p>'
+      + '<div class="steps">' + et.map(function(e, k){
+          return '<div class="step"><span class="step-n">Etapa ' + pad(k + 1) + '</span><h3>' + t(e.titulo, 'nome da etapa') + '</h3><p>' + t(e.descricao, 'O que acontece nesta etapa.') + '</p></div>';
+        }).join('') + '</div>')
+  + sec('02', 'Ferramentas',
+        '<div class="tools">' + fe.map(function(f){
+          return '<div class="tool"><span class="tool-ic" aria-hidden="true">' + (has(f.nome) ? esc(f.nome.trim().charAt(0).toUpperCase()) : '+') + '</span><div><h3>' + t(f.nome, 'ferramenta') + '</h3><p>' + t(f.uso, 'para que você usa') + '</p></div></div>';
+        }).join('') + '</div>')
+  + sec('03', 'Princípios',
+        '<ul class="principles">' + pr.map(function(x){
+          return '<li>' + t(x.texto, 'Um princípio que guia seu uso de IA, ex.: revisar tudo o que a IA gera antes de entregar.') + '</li>';
+        }).join('') + '</ul>')
+  + nextLink('contato', 'Vamos<br>conversar');
+}
+
+/* ---------- contato ---------- */
+function contatoHTML(){
+  var C = CONTATO;
+  var rows = [
+    { k: 'E-mail',    v: C.email,     h: 'seu e-mail profissional',                   a: 'copy' },
+    { k: 'LinkedIn',  v: C.linkedin,  h: 'link do seu LinkedIn',                      a: 'open' },
+    { k: 'Behance',   v: C.behance,   h: 'link do seu Behance ou portfólio visual',   a: 'open' },
+    { k: 'WhatsApp',  v: C.whatsapp,  h: '(11) 90000-0000',                           a: 'copy' },
+    { k: 'Currículo', v: C.curriculo, h: 'link do currículo em PDF no Google Drive',  a: 'open' }
+  ];
+  var list = rows.map(function(r, i){
+    var val = has(r.v) ? esc(r.a === 'open' ? stripUrl(r.v) : r.v) : ph(r.h);
+    var action;
+    if (r.a === 'copy') action = '<button class="btn-line js-copy" type="button" data-target="ch-' + i + '"' + (has(r.v) ? ' data-copy="' + esc(r.v) + '"' : ' disabled') + '>Copiar</button>';
+    else action = has(r.v) ? '<a class="btn-line" href="' + esc(r.v) + '" target="_blank" rel="noopener">Abrir ↗</a>' : '<span class="btn-line is-off">Abrir ↗</span>';
+    return '<li><span class="ch-k">' + r.k + '</span><span class="ch-v" id="ch-' + i + '">' + val + '</span>' + action + '</li>';
+  }).join('');
+
+  return ''
+  + titleBlock([], 'Vamos conversar?')
+  + sec('01', 'Convite', '<p class="lead">' + t(C.convite, 'Uma frase final de convite para quem está avaliando o portfólio.') + '</p>')
+  + sec('02', 'Canais', '<ul class="channels">' + list + '</ul>')
+  + '<div class="colophon"><span>© 2026 ' + esc(PERFIL.nome) + '</span><span>Portfólio IA</span><span>' + esc(PERFIL.base) + '</span></div>';
+}
+
+/* ---------- montar páginas ---------- */
+var main = $('#main');
+var metodoEl = $('[data-view="metodo"]');
+PROJETOS.forEach(function(p, i){
+  var s = document.createElement('section');
+  s.className = 'view';
+  s.dataset.view = p.id;
+  s.hidden = true;
+  s.setAttribute('aria-label', 'Projeto ' + p.num);
+  s.innerHTML = projetoHTML(p, i);
+  main.insertBefore(s, metodoEl);
+});
+$('[data-view="sobre"]').innerHTML = sobreHTML();
+metodoEl.innerHTML = metodoHTML();
+$('[data-view="contato"]').innerHTML = contatoHTML();
+
+$('#indexIntro').innerHTML = esc(APRESENTACAO);
+$('#indexList').innerHTML = PROJETOS.map(function(p){
+  return '<li><a href="#' + p.id + '"><span class="ix-n">' + p.num + '</span><span class="ix-t">' + esc(p.titulo) + '</span><span class="ix-c">' + esc(p.categoria) + '</span><span class="ix-go" aria-hidden="true">→</span></a></li>';
+}).join('');
+$('#trio').innerHTML = [
+  { id: 'sobre',   t: 'Sobre',   d: 'Perfil e experiência', img: 'img/home-sobre.webp' },
+  { id: 'metodo',  t: 'Método',  d: 'Processo e ferramentas', img: 'img/home-metodo.webp' },
+  { id: 'contato', t: 'Contato', d: 'Canais e currículo', img: 'img/home-contato.webp' }
+].map(function(c){
+  return '<a class="card-link" href="#' + c.id + '"><img class="card-bg" src="' + c.img + '" alt="" loading="lazy"><span class="cl-n"></span><span class="cl-t">' + c.t + '</span><span class="cl-go"><span>' + c.d + '</span><span aria-hidden="true">→</span></span></a>';
+}).join('');
+
+/* ---------- navegação ---------- */
+var dock = $('#dock');
+dock.innerHTML = VIEWS.map(function(v, i){
+  var sep = (v.id === 'p01' || v.id === 'metodo') ? '<span class="sep" aria-hidden="true"></span>' : '';
+  return sep + '<a href="#' + v.id + '" data-id="' + v.id + '"' + (v.aria ? ' aria-label="' + esc(v.aria) + '"' : '') + '>' + esc(v.nome) + '</a>';
+}).join('');
+
+function show(id, initial){
+  var v = VIEWS[0];
+  for (var i = 0; i < VIEWS.length; i++) if (VIEWS[i].id === id) v = VIEWS[i];
+  document.querySelectorAll('.view').forEach(function(el){ el.hidden = el.dataset.view !== v.id; });
+  dock.querySelectorAll('a').forEach(function(a){
+    if (a.dataset.id === v.id) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+  });
+  if (!initial) window.scrollTo(0, 0);
+  var act = dock.querySelector('[aria-current]');
+  if (act) dock.scrollLeft = act.offsetLeft - dock.clientWidth / 2 + act.offsetWidth / 2;
+}
+window.addEventListener('hashchange', function(){ show(location.hash.slice(1)); if (location.hash.slice(1) && location.hash !== '#inicio' && document.documentElement.classList.contains('sem-ia')) sw.click(); });
+show(location.hash.slice(1), true);
+
+/* ---------- chave Manual / Com IA ---------- */
+var sw = $('#modeSwitch'), modeVal = $('#modeVal'), modeWrap = $('#modeWrap');
+sw.addEventListener('click', function(){
+  var on = sw.getAttribute('aria-pressed') !== 'true';
+  sw.setAttribute('aria-pressed', on ? 'true' : 'false');
+  modeVal.textContent = on ? 'Com IA' : 'Sem IA';
+  modeWrap.classList.toggle('is-manual', !on);
+  document.documentElement.classList.toggle('sem-ia', !on);
+});
+
+/* ---------- abas de prompts ---------- */
+function selectTab(tab){
+  tab.closest('[role="tablist"]').querySelectorAll('[role="tab"]').forEach(function(t){
+    var on = t === tab;
+    t.setAttribute('aria-selected', on ? 'true' : 'false');
+    t.tabIndex = on ? 0 : -1;
+    var panel = document.getElementById(t.getAttribute('aria-controls'));
+    if (panel) panel.hidden = !on;
+  });
+}
+document.addEventListener('click', function(e){ var tb = e.target.closest('.ptab'); if (tb) selectTab(tb); });
+document.addEventListener('keydown', function(e){
+  var tb = e.target.closest && e.target.closest('.ptab');
+  if (!tb || (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft')) return;
+  var tabs = Array.prototype.slice.call(tb.parentNode.querySelectorAll('.ptab'));
+  var nx = tabs[(tabs.indexOf(tb) + (e.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length];
+  nx.focus(); selectTab(nx); e.preventDefault();
+});
+
+/* ---------- simulador do fluxo diário ---------- */
+function parseBR(v){
+  v = String(v || '').replace(/R\$|\s/g, '');
+  if (!v) return null;
+  if (v.indexOf(',') > -1) v = v.replace(/\./g, '').replace(',', '.');
+  else if (/^-?\d{1,3}(\.\d{3})+$/.test(v)) v = v.replace(/\./g, '');
+  if (!/^-?\d*\.?\d+$/.test(v)) return NaN;
+  return parseFloat(v);
+}
+function fmtBR(x){ return (x < 0 ? '-' : '') + 'R$ ' + Math.abs(x).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+function cents(x){ return Math.round(x * 100) / 100; }
+function simFill(clear){
+  var st = $('#sim-start'); if (!st) return;
+  if (!clear) st.value = SIM_INICIAL;
+  SIM_EXEMPLO.forEach(function(r, k){
+    $('#sim-in-' + k).value = clear ? '' : r.e;
+    $('#sim-out-' + k).value = clear ? '' : r.s;
+    $('#sim-g-' + k).value = clear ? '' : r.g;
+  });
+  simRun();
+}
+function simRun(){
+  var st = $('#sim-start'); if (!st) return;
+  var start = parseBR(st.value), bad = false;
+  st.classList.toggle('bad', isNaN(start));
+  if (start == null || isNaN(start)){ if (isNaN(start)) bad = true; start = 0; }
+  var saldo = start, tin = 0, tout = 0, neg = 0, last = null, pts = [];
+  var tg = 0;
+  SIM_EXEMPLO.forEach(function(r, k){
+    var ie = $('#sim-in-' + k), io = $('#sim-out-' + k), ig = $('#sim-g-' + k);
+    var e = parseBR(ie.value), o = parseBR(io.value), g = parseBR(ig.value);
+    [[ie, e], [io, o], [ig, g]].forEach(function(x){ x[0].classList.toggle('bad', isNaN(x[1])); });
+    if (isNaN(e)) { e = null; bad = true; }
+    if (isNaN(o)) { o = null; bad = true; }
+    if (isNaN(g)) { g = null; bad = true; }
+    var sEl = $('#sim-s-' + k);
+    if (e == null && o == null && g == null){ sEl.textContent = ''; sEl.className = 'sim-s'; pts.push({ d: r.d, v: null }); return; }
+    saldo = cents(saldo + (e || 0) - (o || 0) - (g || 0));
+    tin = cents(tin + (e || 0)); tout = cents(tout + (o || 0)); tg = cents(tg + (g || 0));
+    sEl.textContent = fmtBR(saldo); sEl.className = 'sim-s' + (saldo < 0 ? ' neg' : '');
+    if (saldo < 0) neg++;
+    last = { d: r.d, v: saldo }; pts.push({ d: r.d, v: saldo });
+  });
+  $('#sim-tin').textContent = fmtBR(tin);
+  $('#sim-tout').textContent = fmtBR(tout);
+  $('#sim-tdia').textContent = fmtBR(tg);
+  var endEl = $('#sim-tend'); endEl.textContent = fmtBR(saldo); endEl.className = saldo < 0 ? 'neg' : '';
+  var v = last ? last.v : start, big = $('#sim-big');
+  big.textContent = fmtBR(v); big.className = 'sim-v' + (v < 0 ? ' neg' : '');
+  $('#sim-lastd').textContent = last ? last.d : '01/11';
+  var mx = Math.max(Math.abs(start), 1);
+  pts.forEach(function(q){ if (q.v != null) mx = Math.max(mx, Math.abs(q.v)); });
+  $('#sim-bars').innerHTML = pts.map(function(q){
+    var h = q.v == null ? 0 : Math.max(2, Math.abs(q.v) / mx * 100);
+    return '<div><em class="' + (q.v == null ? 'none' : q.v < 0 ? 'neg' : '') + '" style="height:' + h.toFixed(1) + '%"></em><span>' + q.d.slice(0, 2) + '</span></div>';
+  }).join('');
+  $('#sim-state').textContent = bad ? 'Use só números, como 1.234,56.'
+    : (neg ? neg + (neg > 1 ? ' dias' : ' dia') + ' com saldo negativo.' : 'Nenhum dia com saldo negativo.');
+}
+document.addEventListener('input', function(e){ if (e.target.closest && e.target.closest('.sim')) simRun(); });
+document.addEventListener('click', function(e){
+  if (e.target.closest('#sim-reset')) simFill(false);
+  else if (e.target.closest('#sim-clear')) simFill(true);
+});
+(function(){ var st = $('#sim-start'); if (!st) return; if (!st.value) simFill(false); else simRun(); })();
+
+/* ---------- ampliar figuras ---------- */
+var lb = $('#lb'), lbImg = $('#lbImg'), lbFrom = null;
+function closeLb(){ lb.hidden = true; lbImg.removeAttribute('src'); if (lbFrom) lbFrom.focus(); lbFrom = null; }
+document.addEventListener('click', function(e){
+  var z = e.target.closest('.js-zoom');
+  if (z){
+    var im = z.querySelector('img');
+    lbImg.src = im.getAttribute('src'); lbImg.alt = im.alt;
+    lb.hidden = false; lbFrom = z; $('#lbClose').focus();
+    return;
+  }
+  if (!lb.hidden && e.target.closest('#lb')) closeLb();
+});
+document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !lb.hidden) closeLb(); });
+window.addEventListener('hashchange', function(){ if (!lb.hidden) closeLb(); });
+
+/* ---------- copiar ---------- */
+function flash(b, msg){
+  var old = b.textContent; b.textContent = msg;
+  setTimeout(function(){ b.textContent = old; }, 1600);
+}
+function selectNode(node){
+  if (!node) return;
+  try { var r = document.createRange(); r.selectNodeContents(node); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); } catch (e) {}
+}
+document.addEventListener('click', function(e){
+  var b = e.target.closest('.js-copy');
+  if (!b || b.disabled) return;
+  var node = b.dataset.target ? document.getElementById(b.dataset.target)
+    : (b.closest('.prompt') ? b.closest('.prompt').querySelector('pre') : (b.closest('.fxbar') ? b.closest('.fxbar').querySelector('code') : null));
+  var text = b.dataset.copy || (node ? node.innerText : '');
+  try {
+    navigator.clipboard.writeText(text).then(function(){ flash(b, 'Copiado'); }, function(){ selectNode(node); flash(b, 'Selecionado'); });
+  } catch (err) { selectNode(node); flash(b, 'Selecionado'); }
+});
+
+})();
+</script>
+
+</body></html>
